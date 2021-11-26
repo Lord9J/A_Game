@@ -4,9 +4,9 @@ signal hit
 
 
 const MOVE_SPEED = 300
+export var bulletScene : PackedScene    # префаб пули
 
-# ---    стрельба    ----
-const bullet = preload('res://Presets/Bullet.tscn')  # префаб пули
+
 export var bullet_speed = 500
 export var fire_rate=0.1
 var can_fire=true
@@ -39,14 +39,22 @@ func _physics_process(delta):
 	
 	# ---    стрельба    ----
 	if Input.is_action_pressed("shoot") and can_fire:
-		var bullet_instance= bullet.instance()
-		bullet_instance.position=$BulletPoint.get_global_position()
-		bullet_instance.rotation_degrees=rotation_degrees
-		bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed,0).rotated(rotation))
-		get_tree().get_root().add_child(bullet_instance)
+		
+		var bullet = bulletScene.instance() as Node2D
+		get_parent().add_child(bullet)
+		bullet.global_position = $BulletPoint.global_position
+		bullet.direction = (get_global_mouse_position() - global_position).normalized()
+		bullet.rotation = bullet.direction.angle()
 		can_fire=false
 		yield(get_tree().create_timer(fire_rate),"timeout")
 		can_fire=true
+
+#		var bullet_instance= bullet.instance()
+#		bullet_instance.position=$BulletPoint.get_global_position()
+#		bullet_instance.rotation_degrees=rotation_degrees
+#		bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed,0).rotated(rotation))
+#		get_tree().get_root().add_child(bullet_instance)
+		
 		# ---    стрельба    ----
 		
 		
@@ -55,3 +63,6 @@ func _physics_process(delta):
 	#		coll.kill()
 
 
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("Zombie"):
+		queue_free()

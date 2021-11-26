@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/soldier.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Bullet.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 11.0454
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( -128.968, 6.53939, -1418.65, 3.2697, -1805.55, 1.30788, -1418.65, 0, -1031.74, 1.96182, -257.936, 3.92364, 0, 3.2697, -386.904, 1.96182, -386.904, 0, -257.936, -1.96182, -128.968, -3.2697, -644.84, -2.61576, -1031.74, -1.96182, -902.776, -1.30788, -773.808, -0.653939, -1031.74, 0, -1418.65, 0, -2579.36, 0, -2579.36, -1.30788, -1676.58, -1.30788, -1160.71, -4.57758, -128.968, -6.53939, 515.872, -5.88545, 773.808, -5.88545, 902.776, -5.23152, 1031.74, -0.653939, 773.808, 3.92364, 257.936, 5.88545 )
+
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 1 )
+bulletScene = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -27,3 +32,10 @@ zoom = Vector2( 0.5, 0.5 )
 
 [node name="BulletPoint" type="Node2D" parent="."]
 position = Vector2( 20, 1 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2( -0.00775386, -1.52919 )
+occluder = SubResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
