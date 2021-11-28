@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fire Bullet Pixel All.png-6e53e905fce96c0ea94d1f744c3128e6.stex"
+path="res://.import/Fire Bullet Pixel All.png-3a10dc03196c8ceb3cf484da3835dd4d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ARTs/Fire Bullet Pixel All.png"
-dest_files=[ "res://.import/Fire Bullet Pixel All.png-6e53e905fce96c0ea94d1f744c3128e6.stex" ]
+source_file="res://ARTs/Bullet_art/Fire Bullet Pixel All.png"
+dest_files=[ "res://.import/Fire Bullet Pixel All.png-3a10dc03196c8ceb3cf484da3835dd4d.stex" ]
 
 [params]
 

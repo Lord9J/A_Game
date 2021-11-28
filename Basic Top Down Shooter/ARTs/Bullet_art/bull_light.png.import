@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bull_5.png-0bd92c78a4674f09ee6221cd56c86c70.stex"
+path="res://.import/bull_light.png-558f65655b8e9a25dfb5b556c29cf885.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ARTs/bull_5.png"
-dest_files=[ "res://.import/bull_5.png-0bd92c78a4674f09ee6221cd56c86c70.stex" ]
+source_file="res://ARTs/Bullet_art/bull_light.png"
+dest_files=[ "res://.import/bull_light.png-558f65655b8e9a25dfb5b556c29cf885.stex" ]
 
 [params]
 

@@ -4,6 +4,9 @@ const MOVE_SPEED = 100
 
 onready var raycast = $RayCast2D
 
+export(int) var hp=100
+var max_hp = hp
+
 var player = null
 
 func _ready():
@@ -18,10 +21,19 @@ func _physics_process(delta):
 	global_rotation = atan2(vec_to_player.y, vec_to_player.x)
 	move_and_collide(vec_to_player * MOVE_SPEED * delta)
 	
-	if raycast.is_colliding():
-		var coll = raycast.get_collider()
-		#if coll.name == "Player":
+
 
 
 func set_player(p):
 	player = p
+
+
+
+
+# попал пулей по зомби
+func _on_HurtBox_area_entered(body):
+	if body.is_in_group("bullet"):
+		hp-=20
+		$HPBar.set_percent_value_int(float(hp)/max_hp*100)
+		if hp<=0:
+		 queue_free()

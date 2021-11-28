@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-signal hit
+export(int) var hp=100
+var max_hp=hp
 
 
 const MOVE_SPEED = 300
@@ -63,6 +64,7 @@ func _physics_process(delta):
 	#		coll.kill()
 
 
-func _on_Area2D_area_entered(area):
-	if area.is_in_group("Zombie"):
-		queue_free()
+# получение урона
+func _on_HurtBox_area_entered(body):
+	if body.is_in_group("enemy_hit"):
+		print("зомби бьет")
