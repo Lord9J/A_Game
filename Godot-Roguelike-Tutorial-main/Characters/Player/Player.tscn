@@ -267,10 +267,8 @@ hp = 4
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" parent="." index="1"]
-visible = false
 frames = SubResource( 17 )
 animation = "idle"
-frame = 5
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0, 3 )
@@ -285,6 +283,7 @@ anims/move = SubResource( 22 )
 [node name="Weapons" type="Node2D" parent="." index="4"]
 
 [node name="Sword" parent="Weapons" index="0" instance=ExtResource( 6 )]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 current = true

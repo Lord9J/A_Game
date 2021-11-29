@@ -24,13 +24,20 @@ func _ready():
 func _physics_process(delta):
 	var move_vec = Vector2()
 	if Input.is_action_pressed("move_up"):
+		$AnimatedSprite.play("walk")
 		move_vec.y -= 1
 	if Input.is_action_pressed("move_down"):
+		$AnimatedSprite.play("walk")
 		move_vec.y += 1
 	if Input.is_action_pressed("move_left"):
+		$AnimatedSprite.play("walk")
 		move_vec.x -= 1
 	if Input.is_action_pressed("move_right"):
+		$AnimatedSprite.play("walk")
 		move_vec.x += 1
+		
+		
+		$AnimatedSprite.play("idle")
 	move_vec = move_vec.normalized()
 	move_and_collide(move_vec * MOVE_SPEED * delta)
 	
@@ -68,3 +75,7 @@ func _physics_process(delta):
 func _on_HurtBox_area_entered(body):
 	if body.is_in_group("enemy_hit"):
 		print("зомби бьет")
+		
+
+func animate():
+	var anim="walk"
