@@ -3,7 +3,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Zombie.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ARTs/Dungeon tileset.png" type="Texture" id=3]
-[ext_resource path="res://ARTs/Laser Sprites/01.png" type="Texture" id=4]
+[ext_resource path="res://01.png" type="Texture" id=4]
 [ext_resource path="res://ARTs/background.png" type="Texture" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
@@ -80,17 +80,14 @@ scale = Vector2( 11.2461, 7.32031 )
 texture = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 530, 276 )
-
-[node name="Zombie" parent="." instance=ExtResource( 2 )]
-visible = false
-position = Vector2( 242.659, 403.324 )
+position = Vector2( 489, 265 )
 
 [node name="TileMap Walls" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
+cell_size = Vector2( 16, 16 )
 collision_layer = 8
 format = 1
+tile_data = PoolIntArray( 393229, 1, 0, 786458, 1, 0, 786459, 1, 0, 786460, 1, 0, 786461, 1, 0, 786462, 1, 0, 786463, 1, 0, 786464, 1, 0, 786465, 1, 0, 786466, 1, 0, 786467, 1, 0, 786468, 1, 0, 786469, 1, 0, 786470, 1, 0, 786471, 1, 0, 786472, 1, 0, 786473, 1, 0, 786474, 1, 0, 786475, 1, 0, 786476, 1, 0, 851993, 1, 0, 917528, 1, 0, 983063, 1, 0 )
 
 [node name="TileMap_Ground" type="TileMap" parent="."]
 z_index = -1
@@ -118,3 +115,6 @@ texture_scale = 2.33
 color = Color( 0.827451, 1, 0, 1 )
 energy = 2.67
 shadow_enabled = true
+
+[node name="Zombie" parent="." instance=ExtResource( 2 )]
+position = Vector2( 485, 333 )

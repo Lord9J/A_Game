@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MOVE_SPEED = 100
+const MOVE_SPEED = 40
 
 onready var raycast = $RayCast2D
 

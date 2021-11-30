@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const speed = 500
+const speed = 300
 
 export var smokeScene : PackedScene
 

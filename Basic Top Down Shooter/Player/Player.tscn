@@ -26,14 +26,15 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=1]
 radius = 11.0454
 
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( -128.968, 6.53939, -1418.65, 3.2697, -1805.55, 1.30788, -1418.65, 0, -1031.74, 1.96182, -257.936, 3.92364, 0, 3.2697, -386.904, 1.96182, -386.904, 0, -257.936, -1.96182, -128.968, -3.2697, -644.84, -2.61576, -1031.74, -1.96182, -902.776, -1.30788, -773.808, -0.653939, -1031.74, 0, -1418.65, 0, -2579.36, 0, -2579.36, -1.30788, -1676.58, -1.30788, -1160.71, -4.57758, -128.968, -6.53939, 515.872, -5.88545, 773.808, -5.88545, 902.776, -5.23152, 1031.74, -0.653939, 773.808, 3.92364, 257.936, 5.88545 )
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( 257.936, 1.96182, 386.904, 1.30788, 386.904, -1.30788, 128.968, -2.61576, -128.968, -2.61576, -386.904, -1.30788, -386.904, 1.30788, -128.968, 2.61576, 128.968, 2.61576 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 10.9705
 height = 2.0
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
+scale = Vector2( 1.80299, 1.80299 )
 script = ExtResource( 1 )
 bulletScene = ExtResource( 3 )
 fire_rate = 0.5
@@ -47,25 +48,23 @@ frames = SubResource( 4 )
 animation = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+scale = Vector2( 0.382332, 0.382332 )
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
 enabled = true
 cast_to = Vector2( 2000, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.16, 0.16 )
 
 [node name="BulletPoint" type="Node2D" parent="."]
-position = Vector2( 20, 1 )
+position = Vector2( 4, 0 )
+scale = Vector2( 0.496615, 0.496615 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
 scale = Vector2( -0.00775386, -1.52919 )
-occluder = SubResource( 2 )
+occluder = SubResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -77,10 +76,8 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
 modulate = Color( 4.62, 0.27, 1, 0.76 )
-position = Vector2( 2, 0 )
-scale = Vector2( 1.185, 1 )
+scale = Vector2( 0.455293, 0.384213 )
 shape = SubResource( 3 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
