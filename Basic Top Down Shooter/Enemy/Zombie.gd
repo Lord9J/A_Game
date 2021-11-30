@@ -9,8 +9,10 @@ var max_hp = hp
 
 var player = null
 
+
 func _ready():
 	add_to_group("zombies")
+	
 
 func _physics_process(delta):
 	if player == null:
@@ -33,7 +35,9 @@ func set_player(p):
 # попал пулей по зомби
 func _on_HurtBox_area_entered(body):
 	if body.is_in_group("bullet"):
-		hp-=20
+		
+		
+		
 		$HPBar.set_percent_value_int(float(hp)/max_hp*100)
 		if hp<=0:
 		 queue_free()

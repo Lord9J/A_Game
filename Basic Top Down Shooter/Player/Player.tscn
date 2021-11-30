@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://ARTs/player/idle.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://ARTs/player/walk_4.png" type="Texture" id=7]
 [ext_resource path="res://ARTs/player/walk_1.png" type="Texture" id=8]
 [ext_resource path="res://ARTs/player/walk_3.png" type="Texture" id=9]
+[ext_resource path="res://ARTs/light/flashlight-2.png" type="Texture" id=10]
+[ext_resource path="res://ARTs/background.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -57,6 +59,7 @@ cast_to = Vector2( 2000, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 0.35, 0.35 )
 
 [node name="BulletPoint" type="Node2D" parent="."]
 position = Vector2( 4, 0 )
@@ -79,5 +82,21 @@ collision_mask = 4
 modulate = Color( 4.62, 0.27, 1, 0.76 )
 scale = Vector2( 0.455293, 0.384213 )
 shape = SubResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 4.43707, -0.554634 )
+scale = Vector2( 0.406369, 0.406369 )
+texture = ExtResource( 10 )
+offset = Vector2( 139.63, -3.985 )
+texture_scale = 0.56
+color = Color( 0.929412, 0.937255, 0.941176, 1 )
+energy = 0.72
+shadow_enabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.188235, 0.188235, 0.188235, 1 )
+position = Vector2( 62.119, -3.88244 )
+texture = ExtResource( 11 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

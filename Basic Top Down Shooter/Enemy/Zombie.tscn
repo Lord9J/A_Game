@@ -20,7 +20,7 @@ height = 9.54597
 radius = 15.0
 
 [node name="Zombie" type="KinematicBody2D"]
-scale = Vector2( 4.61414, 4.61414 )
+scale = Vector2( 1.803, 1.803 )
 collision_layer = 4
 collision_mask = 11
 script = ExtResource( 1 )
@@ -35,7 +35,7 @@ position = Vector2( -2, 0 )
 occluder = SubResource( 5 )
 
 [node name="HurtBox" type="Area2D" parent="." groups=["enemy_hurt"]]
-position = Vector2( -1, 0 )
+position = Vector2( -0.554631, 0 )
 scale = Vector2( 0.161596, 0.274453 )
 collision_layer = 4
 collision_mask = 10
@@ -47,10 +47,9 @@ scale = Vector2( 2.817, 1.652 )
 shape = SubResource( 4 )
 
 [node name="HitBox" type="Area2D" parent="." groups=["enemy_hit"]]
-visible = false
 position = Vector2( -1, 0 )
 scale = Vector2( 0.299, 0.358 )
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
