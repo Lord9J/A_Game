@@ -1,8 +1,6 @@
-extends KinematicBody2D
+extends Character
+enum {UP, DOWN}
 
-
-
-const MOVE_SPEED = 100
 
 # ---   стрельба        ----
 export var bulletScene : PackedScene    # префаб пули
@@ -11,15 +9,10 @@ export var fire_rate=0.1
 var can_fire=true
 # ---   стрельба        ----
 
-
-
-
-onready var raycast = $RayCast2D
-
 func _ready():
 	yield(get_tree(), "idle_frame")
 	get_tree().call_group("zombies", "set_player", self)
-
+	
 func _physics_process(delta):
 	var move_vec = Vector2()
 
@@ -46,7 +39,7 @@ func _physics_process(delta):
 		$AnimatedSprite.play("idle")
 
 	move_vec = move_vec.normalized()
-	move_and_collide(move_vec * MOVE_SPEED * delta)
+	move_and_collide(move_vec * max_speed * delta)
 	
 	var look_vec = get_global_mouse_position() - global_position
 	global_rotation = atan2(look_vec.y, look_vec.x)
@@ -64,24 +57,14 @@ func _physics_process(delta):
 		yield(get_tree().create_timer(fire_rate),"timeout")
 		can_fire=true
 
-#		var bullet_instance= bullet.instance()
-#		bullet_instance.position=$BulletPoint.get_global_position()
-#		bullet_instance.rotation_degrees=rotation_degrees
-#		bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed,0).rotated(rotation))
-#		get_tree().get_root().add_child(bullet_instance)
-		
-		# ---    стрельба    ----
-		
-		
-	#	var coll = raycast.get_collider()
-	#	if raycast.is_colliding() and coll.has_method("kill"):
-	#		coll.kill()
+
 
 
 # получение урона
 func _on_HurtBox_area_entered(body):
 	if body.is_in_group("enemy_hit"):
 		print("зомби бьет")
+		take_damage(20);
 		
 
 func animate():

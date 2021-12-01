@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Enemy/Zombie.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Enemy/Zombie.gd" type="Script" id=1]
 [ext_resource path="res://ARTs/player/idle.png" type="Texture" id=2]
 [ext_resource path="res://HPBar.gd" type="Script" id=3]
 [ext_resource path="res://ARTs/PNG/ProgressBar_05/BarV5_Bar.png" type="Texture" id=4]
