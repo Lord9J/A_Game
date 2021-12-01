@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 const MOVE_SPEED = 40
 
-onready var raycast = $RayCast2D
 
 export(int) var hp=100
 var max_hp = hp

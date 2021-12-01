@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "FiniteStateMachine",
+"language": "GDScript",
+"path": "res://Characters/FSM.gd"
+}, {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://Characters/Hitbox.gd"
+} ]
+_global_script_class_icons={
+"FiniteStateMachine": "",
+"Hitbox": ""
+}
+
 [application]
 
 config/name="tpdown_final"
