@@ -37,7 +37,7 @@ func _on_HurtBox_area_entered(body):
 	if body.is_in_group("bullet"):
 		
 		
-		
+		hp=hp-15
 		$HPBar.set_percent_value_int(float(hp)/max_hp*100)
 		if hp<=0:
 		 queue_free()
