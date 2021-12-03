@@ -7,13 +7,15 @@ export var bulletScene : PackedScene    # префаб пули
 export var bullet_speed = 500
 export var fire_rate=0.1
 var can_fire=true
+var can_take_damage=true
 # ---   стрельба        ----
 
-func _ready():
-	yield(get_tree(), "idle_frame")
-	get_tree().call_group("zombies", "set_player", self)
+#func _ready():
+#	yield(get_tree(), "idle_frame")
+#	get_tree().call_group("zombies", "set_player", self)
 	
 func _physics_process(delta):
+	
 	var move_vec = Vector2()
 
 	var isMoving: bool=false
@@ -56,15 +58,22 @@ func _physics_process(delta):
 		can_fire=false
 		yield(get_tree().create_timer(fire_rate),"timeout")
 		can_fire=true
+	
+	
 
 
 
 
 # получение урона
 func _on_HurtBox_area_entered(body):
-	if body.is_in_group("enemy_hit"):
-		print("зомби бьет")
-		take_damage(20);
+	if body.is_in_group("enemy_hit") and can_take_damage :
+			take_damage(10)
+			can_take_damage=false
+			print("НЕ ПОЛУЧАЮ УРОН")
+			yield(get_tree().create_timer(1),"timeout")
+			can_take_damage=true
+			print("получаю урон")
+		
 		
 
 func animate():

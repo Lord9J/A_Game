@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Characters/Enemy/Zombie.gd" type="Script" id=1]
 [ext_resource path="res://ARTs/player/idle.png" type="Texture" id=2]
@@ -18,6 +18,8 @@ height = 9.54597
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.0
+
+[sub_resource type="CircleShape2D" id=6]
 
 [node name="Zombie" type="KinematicBody2D"]
 scale = Vector2( 1.803, 1.803 )
@@ -85,4 +87,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Trigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+scale = Vector2( 3.39131, 3.39131 )
+shape = SubResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="body_entered" from="Trigger" to="." method="_on_Trigger_body_entered"]
+[connection signal="body_exited" from="Trigger" to="." method="_on_Trigger_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

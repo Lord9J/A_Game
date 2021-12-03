@@ -37,7 +37,7 @@ height = 2.0
 scale = Vector2( 1.80299, 1.80299 )
 script = ExtResource( 3 )
 max_hp = 100
-hp = 70
+hp = 100
 bulletScene = ExtResource( 1 )
 fire_rate = 0.5
 

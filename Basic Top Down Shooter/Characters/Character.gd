@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name Character, "res://ARTs/player/idle.png"
 
-onready var hpbar: CanvasLayer = get_node("UI")
+
 #const HIT_EFFECT_SCENE: PackedScene = preload("res://Characters/HitEffect.tscn")
 
 const FRICTION: float = 0.15
@@ -36,6 +36,7 @@ func move() -> void:
 	
 func take_damage(dam: int) -> void:
 		self.hp -= dam
+		print(hp)
 		#_update_health_bar(hp)
 
 		
