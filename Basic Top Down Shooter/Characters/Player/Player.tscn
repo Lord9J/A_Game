@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
+[ext_resource path="res://UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://ARTs/player/idle.png" type="Texture" id=4]
@@ -28,7 +29,7 @@ animations = [ {
 radius = 11.0454
 
 [sub_resource type="OccluderPolygon2D" id=5]
-polygon = PoolVector2Array( 257.936, 1.96182, 386.904, 1.30788, 386.904, -1.30788, 128.968, -2.61576, -128.968, -2.61576, -386.904, -1.30788, -386.904, 1.30788, -128.968, 2.61576, 128.968, 2.61576 )
+polygon = PoolVector2Array( 257.936, 1.96182, 386.904, 1.30788, 386.904, -1.30788, 128.968, -2.61576, -128.968, -2.61576, -357.65, -1.45079, -720.699, -1.24166, -786.831, -1.08809, -786.831, -0.362698, -715.301, 0, -286.12, 0, -286.12, 1.45079, -128.968, 2.61576, 128.968, 2.61576 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 10.9705
@@ -85,5 +86,9 @@ texture_scale = 0.56
 color = Color( 0.929412, 0.937255, 0.941176, 1 )
 energy = 0.72
 shadow_enabled = true
+
+[node name="UI" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 0.593, 0.446 )
+transform = Transform2D( 0.593, 0, 0, 0.446, 0, 0 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

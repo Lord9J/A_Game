@@ -18,11 +18,6 @@ onready var ai = $AI
 
 #func _physics_process(delta):
 	
-
-	
-
-
-
 func set_player(p):
 	player = p
 
@@ -39,11 +34,3 @@ func _on_HurtBox_area_entered(body):
 
 func _on_Trigger_body_exited(body):
 	player = null	
-
-func _on_Timer_timeout():
-	print("пытаюсь стрелять")
-	if player !=null:
-		fire()
-	
-func fire():
-	pass

@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Enemy/Zombie.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ARTs/Dungeon tileset.png" type="Texture" id=3]
 [ext_resource path="res://ARTs/light/flashlight-2.png" type="Texture" id=4]
 [ext_resource path="res://ARTs/background.png" type="Texture" id=5]
-[ext_resource path="res://Objects/UI.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Objects/UI.gd" type="Script" id=7]
 [ext_resource path="res://BulletManager.gd" type="Script" id=8]
 [ext_resource path="res://World.gd" type="Script" id=9]
 
@@ -228,9 +226,6 @@ shadow_enabled = true
 
 [node name="Zombie" parent="." instance=ExtResource( 2 )]
 position = Vector2( 534, 428 )
-
-[node name="UI" parent="." instance=ExtResource( 6 )]
-script = ExtResource( 7 )
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 8 )
