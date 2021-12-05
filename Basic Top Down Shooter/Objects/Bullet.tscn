@@ -17,6 +17,7 @@ scale = Vector2( 4.48069, 4.48069 )
 collision_layer = 8
 collision_mask = 5
 script = ExtResource( 2 )
+speed = 200
 smokeScene = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -45,11 +46,16 @@ shadow_enabled = true
 modulate = Color( 0.160784, 0.937255, 0.027451, 1 )
 scale = Vector2( 1.064, 1.54 )
 collision_layer = 8
-collision_mask = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 2.11758e-22, 0 )
 scale = Vector2( 0.219, 0.029 )
 shape = SubResource( 2 )
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.913
+autostart = true
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

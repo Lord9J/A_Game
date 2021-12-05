@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Bullet/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://ARTs/Laser Sprites/02.png" type="Texture" id=2]
+[ext_resource path="res://ARTs/Laser Sprites/20.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.22318, 0.17409 )
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.026, -0.023 )
+texture = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 1, 0 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+texture_scale = 0.18
+color = Color( 1, 0.952941, 0.658824, 1 )
+energy = 0.86
+range_z_min = -1
+range_z_max = 1
+shadow_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.913
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3.72529e-09 )
+scale = Vector2( -1.92431, -1.82325 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 1.913
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

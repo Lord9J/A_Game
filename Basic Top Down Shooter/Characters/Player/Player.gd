@@ -1,18 +1,26 @@
-extends Character
-enum {UP, DOWN}
+#extends Character
+extends KinematicBody2D
 
+class_name Player
 
-# ---   стрельба        ----
-export var bulletScene : PackedScene    # префаб пули
-export var bullet_speed = 500
-export var fire_rate=0.1
-var can_fire=true
+# --- движение ----
+export(int) var max_speed: int = 100
+export(int) var accerelation: int = 40
+export(bool) var flying: bool = false
+var mov_direction: Vector2 = Vector2.ZERO
+var velocity: Vector2 = Vector2.ZERO
+# --- движение ----
+
 var can_take_damage=true
-# ---   стрельба        ----
 
-#func _ready():
-#	yield(get_tree(), "idle_frame")
-#	get_tree().call_group("zombies", "set_player", self)
+
+# ----  Инициализирует переменную, как только Узел,   -----
+# к которому прикреплен скрипт, а также его дети являются частью дерева сцен.
+onready var hp_stat=$Health 
+onready var weapon = $Weapon
+	
+# ------------------------------------------
+
 	
 func _physics_process(delta):
 	
@@ -48,31 +56,21 @@ func _physics_process(delta):
 	
 	
 	# ---    стрельба    ----
-	if Input.is_action_pressed("shoot") and can_fire:
-		
-		var bullet = bulletScene.instance() as Node2D
-		get_parent().add_child(bullet)
-		bullet.global_position = $BulletPoint.global_position
-		bullet.direction = (get_global_mouse_position() - global_position).normalized()
-		bullet.rotation = bullet.direction.angle()
-		can_fire=false
-		yield(get_tree().create_timer(fire_rate),"timeout")
-		can_fire=true
+	if Input.is_action_pressed("shoot"):
+		weapon.shoot()
 	
 	
-
 
 
 
 # получение урона
 func _on_HurtBox_area_entered(body):
 	if body.is_in_group("enemy_hit") and can_take_damage :
-			take_damage(10)
+			hp_stat.hp -= 10
 			can_take_damage=false
-			print("НЕ ПОЛУЧАЮ УРОН")
+			print("hp = ",hp_stat.hp)
 			yield(get_tree().create_timer(1),"timeout")
 			can_take_damage=true
-			print("получаю урон")
 		
 		
 

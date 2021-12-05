@@ -1,13 +1,18 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Characters/Enemy/Zombie.gd" type="Script" id=1]
 [ext_resource path="res://ARTs/player/idle.png" type="Texture" id=2]
 [ext_resource path="res://HPBar.gd" type="Script" id=3]
 [ext_resource path="res://ARTs/PNG/ProgressBar_05/BarV5_Bar.png" type="Texture" id=4]
 [ext_resource path="res://ARTs/PNG/ProgressBar_05/BarV5_ProgressBar.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Enemy/AI.gd" type="Script" id=6]
+[ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=8]
 
 [sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( -1, -2, -1, 1, 1, 4, 3, 4, 5, 2, 5, -2, 3, -4, 0, -4 )
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 11.4744
@@ -16,10 +21,8 @@ radius = 11.4744
 radius = 11.9205
 height = 9.54597
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 15.0
-
 [sub_resource type="CircleShape2D" id=6]
+radius = 13.0836
 
 [node name="Zombie" type="KinematicBody2D"]
 scale = Vector2( 1.803, 1.803 )
@@ -32,11 +35,21 @@ modulate = Color( 1, 0.164706, 0.164706, 1 )
 scale = Vector2( 0.47, 0.47 )
 texture = ExtResource( 2 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="Тень" type="LightOccluder2D" parent="."]
+modulate = Color( 1, 1, 1, 0.117647 )
 position = Vector2( -2, 0 )
 occluder = SubResource( 5 )
 
+[node name="Коллизия" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 1, 1, 0.184314 )
+scale = Vector2( 0.216375, 0.273646 )
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0
+
+[node name="Health" parent="." instance=ExtResource( 8 )]
+
 [node name="HurtBox" type="Area2D" parent="." groups=["enemy_hurt"]]
+modulate = Color( 1, 1, 1, 0.121569 )
 position = Vector2( -0.554631, 0 )
 scale = Vector2( 0.161596, 0.274453 )
 collision_layer = 4
@@ -49,6 +62,7 @@ scale = Vector2( 2.817, 1.652 )
 shape = SubResource( 4 )
 
 [node name="HitBox" type="Area2D" parent="." groups=["enemy_hit"]]
+modulate = Color( 1, 1, 1, 0.270588 )
 position = Vector2( -1, 0 )
 scale = Vector2( 0.299, 0.358 )
 collision_layer = 0
@@ -59,11 +73,6 @@ modulate = Color( 0, 1, 0.0862745, 1 )
 position = Vector2( 7, 0 )
 scale = Vector2( 1.832, 0.758 )
 shape = SubResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 0.216375, 0.273646 )
-shape = SubResource( 1 )
-one_way_collision_margin = 0.0
 
 [node name="HPBar" type="TextureRect" parent="."]
 margin_left = -1.61559e-27
@@ -87,16 +96,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trigger" type="Area2D" parent="."]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.88
+one_shot = true
+autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+[node name="AI" type="Node2D" parent="." groups=["enemy"]]
+script = ExtResource( 6 )
+
+[node name="Detection" type="Area2D" parent="AI"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/Detection"]
+modulate = Color( 1, 0.356863, 0.717647, 0.152941 )
 scale = Vector2( 3.39131, 3.39131 )
 shape = SubResource( 6 )
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
-[connection signal="body_entered" from="Trigger" to="." method="_on_Trigger_body_entered"]
-[connection signal="body_exited" from="Trigger" to="." method="_on_Trigger_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="AI/Detection" to="AI" method="_on_Detection_body_entered"]
+[connection signal="body_exited" from="AI/Detection" to="AI" method="_on_Detection_body_exited"]
