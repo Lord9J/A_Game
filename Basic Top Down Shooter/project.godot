@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "FiniteStateMachine",
 "language": "GDScript",
-"path": "res://Characters/FSM.gd"
+"path": "res://Characters/Enemy/FSM.gd"
 }, {
 "base": "Area2D",
 "class": "Hitbox",
