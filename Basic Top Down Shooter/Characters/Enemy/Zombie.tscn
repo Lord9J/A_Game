@@ -106,15 +106,20 @@ script = ExtResource( 6 )
 [node name="Detection" type="Area2D" parent="AI"]
 modulate = Color( 1, 1, 1, 0.309804 )
 collision_layer = 0
-collision_mask = 10
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/Detection"]
 modulate = Color( 1, 0.356863, 0.717647, 1 )
 scale = Vector2( 3.39131, 3.39131 )
 shape = SubResource( 6 )
 
+[node name="PatrolTimer" type="Timer" parent="AI"]
+wait_time = 3.0
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="AI/Detection" to="AI" method="_on_Detection_body_entered"]
 [connection signal="body_exited" from="AI/Detection" to="AI" method="_on_Detection_body_exited"]
+[connection signal="timeout" from="AI/PatrolTimer" to="AI" method="_on_PatrolTimer_timeout"]

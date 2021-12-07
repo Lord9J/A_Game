@@ -26,6 +26,7 @@ func _on_Timer2_timeout():
 
 
 func _on_Bullet_body_entered(body):
-	if body.has_method("handle_hit"):
-		body.handle_hit()
-		queue_free()
+	queue_free()
+#	if body.has_method("handle_hit"):
+#		body.handle_hit()
+		

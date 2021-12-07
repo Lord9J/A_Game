@@ -37,6 +37,8 @@ height = 2.0
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 scale = Vector2( 1.80299, 1.80299 )
+collision_layer = 2
+collision_mask = 13
 script = ExtResource( 3 )
 
 [node name="Health" parent="." instance=ExtResource( 2 )]

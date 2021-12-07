@@ -5,6 +5,7 @@ var player = null
 
 # --- движение ----
 var move = Vector2.ZERO
+export(int) var speed=50
 # --- движение ----
 
 
@@ -12,14 +13,23 @@ var move = Vector2.ZERO
 # к которому прикреплен скрипт, а также его дети являются частью дерева сцен.
 onready var hp_stat=$Health 
 onready var ai = $AI	
+onready var weapon=$Weapon
+
 	
 # ------------------------------------------
 
 
-#func _physics_process(delta):
+func _ready() ->void:
+	ai.initalize(self,weapon)
+
+func rotate_toward(location:Vector2):
+	rotation=lerp(rotation,global_position.direction_to(location).angle(),0.1)
 	
-func set_player(p):
-	player = p
+func velocity_toward(location:Vector2 )->Vector2:
+	return global_position.direction_to(location)*speed
+
+
+
 
 
 # попал пулей по зомби
