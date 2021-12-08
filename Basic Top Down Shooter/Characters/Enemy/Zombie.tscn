@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Characters/Enemy/Zombie.gd" type="Script" id=1]
 [ext_resource path="res://ARTs/player/idle.png" type="Texture" id=2]
-[ext_resource path="res://HPBar.gd" type="Script" id=3]
+[ext_resource path="res://UI/enemy/HPBar.gd" type="Script" id=3]
 [ext_resource path="res://ARTs/PNG/ProgressBar_05/BarV5_Bar.png" type="Texture" id=4]
 [ext_resource path="res://ARTs/PNG/ProgressBar_05/BarV5_ProgressBar.png" type="Texture" id=5]
 [ext_resource path="res://Characters/Enemy/AI.gd" type="Script" id=6]

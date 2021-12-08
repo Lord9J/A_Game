@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://UI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/player/UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://ARTs/player/idle.png" type="Texture" id=4]
@@ -90,7 +90,7 @@ energy = 0.72
 shadow_enabled = true
 
 [node name="UI" parent="." instance=ExtResource( 1 )]
-scale = Vector2( 0.593, 0.446 )
-transform = Transform2D( 0.593, 0, 0, 0.446, 0, 0 )
+offset = Vector2( -40, -25 )
+transform = Transform2D( 1, 0, 0, 1, -40, -25 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

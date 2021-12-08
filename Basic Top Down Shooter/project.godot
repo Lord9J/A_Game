@@ -57,6 +57,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GlobalSignals="*res://globals/GlobalSignals.gd"
+Globals="*res://globals/Globals.tscn"
 
 [display]
 
