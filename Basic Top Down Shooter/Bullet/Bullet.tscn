@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Bullet/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://ARTs/Laser Sprites/02.png" type="Texture" id=2]
@@ -7,7 +7,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 0.22318, 0.17409 )
 
-[node name="Bullet" type="Area2D"]
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="Bullet" type="Area2D" groups=["Bullet"]]
 scale = Vector2( 2.70634, 2.70634 )
 collision_layer = 8
 collision_mask = 7
@@ -42,5 +44,13 @@ disabled = true
 wait_time = 1.913
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="." groups=["Bullet"]]
+scale = Vector2( 0.707854, 0.707854 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 0.0630861, 0.0630861 )
+shape = SubResource( 2 )
+
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

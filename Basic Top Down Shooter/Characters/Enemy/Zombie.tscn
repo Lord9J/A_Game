@@ -53,10 +53,10 @@ one_way_collision_margin = 0.0
 position = Vector2( 3.88242, 1.10926 )
 
 [node name="HurtBox" type="Area2D" parent="." groups=["enemy_hurt"]]
-modulate = Color( 1, 1, 1, 0.121569 )
+modulate = Color( 1, 1, 1, 0.431373 )
 position = Vector2( -0.554631, 0 )
-scale = Vector2( 0.161596, 0.274453 )
-collision_layer = 4
+scale = Vector2( 0.588349, 0.999768 )
+collision_layer = 0
 collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -120,6 +120,7 @@ one_shot = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="body_entered" from="AI/Detection" to="AI" method="_on_Detection_body_entered"]
 [connection signal="body_exited" from="AI/Detection" to="AI" method="_on_Detection_body_exited"]
 [connection signal="timeout" from="AI/PatrolTimer" to="AI" method="_on_PatrolTimer_timeout"]

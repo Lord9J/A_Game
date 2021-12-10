@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/player/HPBar.gd" type="Script" id=1]
 [ext_resource path="res://ARTs/PNG/ProgressBar_06/BarV6_ProgressBar.png" type="Texture" id=2]
+[ext_resource path="res://ARTs/PNG/ProgressBar_05/BarV5_Bar.png" type="Texture" id=3]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -10,7 +11,6 @@ margin_left = 109.0
 margin_top = 48.0
 margin_right = 381.0
 margin_bottom = 69.0
-rect_rotation = 15.0
 rect_scale = Vector2( 1, 1.247 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -18,15 +18,17 @@ __meta__ = {
 }
 
 [node name="TextureProgress" type="TextureProgress" parent="HPBar"]
-margin_left = 15.4037
-margin_top = 203.164
-margin_right = 286.404
-margin_bottom = 224.164
+margin_left = -35.4867
+margin_top = 196.362
+margin_right = 236.513
+margin_bottom = 217.362
 rect_rotation = -90.0
 rect_scale = Vector2( 0.756, 1 )
 value = 100.0
 rounded = true
+texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
+texture_progress_offset = Vector2( 4.022, 2.47 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

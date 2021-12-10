@@ -21,6 +21,9 @@ onready var weapon=$Weapon
 
 func _ready() ->void:
 	ai.initalize(self,weapon)
+	$Bullet.connect(“hurt_enemy”, self, “hurt_signal_received”)
+
+
 
 func rotate_toward(location:Vector2):
 	rotation=lerp(rotation,global_position.direction_to(location).angle(),0.1)
@@ -34,13 +37,16 @@ func velocity_toward(location:Vector2 )->Vector2:
 
 # попал пулей по зомби
 func _on_HurtBox_area_entered(body):
-	if body.is_in_group("bullet"):
+	pass
+
+func _on_Trigger_body_exited(body):
+	player = null	
+
+
+func _on_HurtBox_body_entered(body):
+	if body.is_in_group("Bullet"):
+		print("popal")
 		hp_stat.hp=hp_stat.hp-15
 		$HPBar.set_percent_value_int(float(hp_stat.hp)/hp_stat.max_hp*100)
 		if hp_stat.hp<=0:
 		 queue_free()
-
-
-
-func _on_Trigger_body_exited(body):
-	player = null	

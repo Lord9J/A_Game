@@ -66,7 +66,7 @@ func _physics_process(delta):
 # получение урона
 func _on_HurtBox_area_entered(body):
 	if body.is_in_group("enemy_hit") and can_take_damage :
-			hp_stat.hp -= 10
+			Globals.player_hp-=10
 			can_take_damage=false
 			print("hp = ",hp_stat.hp)
 			yield(get_tree().create_timer(1),"timeout")
