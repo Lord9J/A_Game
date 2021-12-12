@@ -11,6 +11,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player_hp==0:
+	if player_hp<=0:
 		print("you die")
 		player_hp=100

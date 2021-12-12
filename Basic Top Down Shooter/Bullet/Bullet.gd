@@ -1,12 +1,10 @@
 extends Area2D
 class_name Bullet
 
-signal hurt_enemy
-
 export (int) var speed = 10
+export (int) var damage = 20
 
 var direction :=Vector2.ZERO
-
 
 export var smokeScene : PackedScene
 
@@ -33,8 +31,6 @@ func _on_Timer2_timeout():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
-		Globals.player_hp-=10;
+		Globals.player_hp-=damage;
 		
-	if body.is_in_group("Enemy"):
-		emit_signal(“hurt_enemy”)
 	queue_free()

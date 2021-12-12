@@ -166,10 +166,11 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 7/z_index = 0
 
 [node name="World" type="Node2D"]
+position = Vector2( 0, -6 )
 script = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 489, 265 )
+position = Vector2( 489, 264.888 )
 
 [node name="TileMap Walls" type="TileMap" parent="."]
 modulate = Color( 0.678431, 1, 0.772549, 1 )
@@ -216,7 +217,7 @@ energy = 1.68
 shadow_enabled = true
 
 [node name="Zombie" parent="." instance=ExtResource( 2 )]
-position = Vector2( 534, 428 )
+position = Vector2( 461, 450 )
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 8 )

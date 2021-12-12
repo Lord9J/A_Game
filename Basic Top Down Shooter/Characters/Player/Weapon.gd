@@ -18,4 +18,4 @@ func shoot():
 			var direction = (gun_direction.global_position - end_gun.global_position).normalized()
 			GlobalSignals.emit_signal("bullet_fired",bullet_instance,end_gun.global_position,direction)
 			attack_cooldown.start()
-			animation_player.play("muzzle_flash")
+		#	animation_player.play("muzzle_flash")
