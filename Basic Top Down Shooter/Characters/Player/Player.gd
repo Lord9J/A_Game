@@ -11,14 +11,13 @@ var mov_direction: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 # --- движение ----
 
-var can_take_damage=true
 
+var can_take_damage=true
 
 # ----  Инициализирует переменную, как только Узел,   -----
 # к которому прикреплен скрипт, а также его дети являются частью дерева сцен.
 onready var hp_stat=$Health 
 onready var weapon = $Weapon
-	
 # ------------------------------------------
 
 	
@@ -62,7 +61,6 @@ func _physics_process(delta):
 	
 
 
-
 # получение урона
 func _on_HurtBox_area_entered(body):
 	if body.is_in_group("enemy_hit") and can_take_damage :
@@ -72,7 +70,4 @@ func _on_HurtBox_area_entered(body):
 			yield(get_tree().create_timer(1),"timeout")
 			can_take_damage=true
 		
-		
-
-func animate():
-	var anim="walk"
+	

@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ARTs/light/flashlight-2.png" type="Texture" id=1]
+[ext_resource path="res://UI/player/UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Weapon/Weapon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ARTs/Space_Ship/Spaceships/01/Spaceship_01_NAVY BLUE.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Ship.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 11.0454
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 257.936, 1.96182, 386.904, 1.30788, 386.904, -1.30788, 128.968, -2.61576, -128.968, -2.61576, -357.65, -1.45079, -720.699, -1.24166, -786.831, -1.08809, -786.831, -0.362698, -715.301, 0, -286.12, 0, -286.12, 1.45079, -128.968, 2.61576, 128.968, 2.61576 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 10.9705
+height = 2.0
+
+[node name="Ship" type="KinematicBody2D"]
+script = ExtResource( 6 )
+
+[node name="Health" parent="." instance=ExtResource( 4 )]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.0799969, 0.0799969 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2( 0.382332, 0.382332 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.35, 0.35 )
+
+[node name="BulletPoint" type="Node2D" parent="."]
+position = Vector2( 4, 0 )
+scale = Vector2( 0.496615, 0.496615 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+scale = Vector2( -0.00775386, -1.52919 )
+occluder = SubResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HurtBox" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+modulate = Color( 4.62, 0.27, 1, 0.76 )
+scale = Vector2( 0.455293, 0.384213 )
+shape = SubResource( 4 )
+
+[node name="Weapon" parent="." instance=ExtResource( 3 )]
+position = Vector2( 11.6473, -2.77317 )
+
+[node name="Фонарь" type="Light2D" parent="."]
+position = Vector2( 4.43707, -0.554634 )
+scale = Vector2( 0.406369, 0.406369 )
+texture = ExtResource( 1 )
+offset = Vector2( 139.63, -3.985 )
+texture_scale = 0.56
+color = Color( 0.929412, 0.937255, 0.941176, 1 )
+energy = 0.72
+shadow_enabled = true
+
+[node name="UI" parent="." instance=ExtResource( 2 )]
+offset = Vector2( -40, -25 )
+transform = Transform2D( 1, 0, 0, 1, -40, -25 )

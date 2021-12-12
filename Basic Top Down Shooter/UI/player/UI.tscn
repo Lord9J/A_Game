@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://UI/player/HPBar.gd" type="Script" id=1]
+[ext_resource path="res://UI/player/UI.gd" type="Script" id=1]
 [ext_resource path="res://ARTs/PNG/ProgressBar_06/BarV6_ProgressBar.png" type="Texture" id=2]
 [ext_resource path="res://ARTs/PNG/ProgressBar_05/BarV5_Bar.png" type="Texture" id=3]
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource( 1 )
 
 [node name="HPBar" type="TextureRect" parent="."]
 margin_left = 109.0
@@ -12,7 +13,6 @@ margin_top = 48.0
 margin_right = 381.0
 margin_bottom = 69.0
 rect_scale = Vector2( 1, 1.247 )
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -29,6 +29,17 @@ rounded = true
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
 texture_progress_offset = Vector2( 4.022, 2.47 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fps_label" type="Label" parent="."]
+margin_left = 80.0
+margin_top = 321.0
+margin_right = 120.0
+margin_bottom = 335.0
+rect_scale = Vector2( 1.28663, 1.28663 )
+text = "FPS: "
 __meta__ = {
 "_edit_use_anchors_": false
 }

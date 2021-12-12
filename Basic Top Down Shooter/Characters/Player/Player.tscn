@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://UI/player/UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://ARTs/player/walk_4.png" type="Texture" id=9]
 [ext_resource path="res://Weapon/Weapon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ARTs/player/walk_3.png" type="Texture" id=11]
+[ext_resource path="res://Characters/Player/Camera2D_controller.gd" type="Script" id=12]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -29,48 +30,55 @@ animations = [ {
 radius = 11.0454
 
 [sub_resource type="OccluderPolygon2D" id=5]
-polygon = PoolVector2Array( 257.936, 1.96182, 386.904, 1.30788, 386.904, -1.30788, 128.968, -2.61576, -128.968, -2.61576, -357.65, -1.45079, -720.699, -1.24166, -786.831, -1.08809, -786.831, -0.362698, -715.301, 0, -286.12, 0, -286.12, 1.45079, -128.968, 2.61576, 128.968, 2.61576 )
+polygon = PoolVector2Array( 257.936, 1.96182, 386.904, 1.30788, 386.904, -1.30788, 128.968, -2.61576, -128.968, -2.61576, -357.65, -1.45079, -354.022, -0.897546, -796.549, -0.448773, -796.549, 0.448773, -708.044, 0.897546, -354.022, 0.897546, -286.12, 1.45079, -128.968, 2.61576, 128.968, 2.61576 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 10.9705
 height = 2.0
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
-scale = Vector2( 1.80299, 1.80299 )
+scale = Vector2( 0.825042, 0.825042 )
 collision_layer = 2
 collision_mask = 13
 script = ExtResource( 3 )
 
+[node name="Фонарь" type="Light2D" parent="."]
+position = Vector2( 10.9085, 0 )
+scale = Vector2( 0.595, 0.393 )
+texture = ExtResource( 7 )
+offset = Vector2( 252.248, -9.412 )
+energy = 0.72
+shadow_enabled = true
+
 [node name="Health" parent="." instance=ExtResource( 2 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 4 )
-animation = "walk"
+animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-scale = Vector2( 0.382332, 0.382332 )
+scale = Vector2( 0.71344, 0.71344 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( 0.652875, 0.658101 )
 current = true
-zoom = Vector2( 0.35, 0.35 )
+zoom = Vector2( 0.3, 0.3 )
+script = ExtResource( 12 )
 
 [node name="BulletPoint" type="Node2D" parent="."]
 position = Vector2( 4, 0 )
-scale = Vector2( 0.496615, 0.496615 )
+scale = Vector2( 0.838417, 0.838417 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
-scale = Vector2( -0.00775386, -1.52919 )
+scale = Vector2( -0.0136947, -2.70083 )
 occluder = SubResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
+scale = Vector2( 1.74265, 1.74265 )
 collision_layer = 2
 collision_mask = 4
 
@@ -80,17 +88,8 @@ scale = Vector2( 0.455293, 0.384213 )
 shape = SubResource( 3 )
 
 [node name="Weapon" parent="." instance=ExtResource( 10 )]
-position = Vector2( 4.43707, 1.10927 )
-
-[node name="Фонарь" type="Light2D" parent="."]
-position = Vector2( 4.43707, -0.554634 )
-scale = Vector2( 0.406369, 0.406369 )
-texture = ExtResource( 7 )
-offset = Vector2( 139.63, -3.985 )
-texture_scale = 0.56
-color = Color( 0.929412, 0.937255, 0.941176, 1 )
-energy = 0.72
-shadow_enabled = true
+position = Vector2( 7.27236, 1.42109e-14 )
+scale = Vector2( 1.97458, 1.97458 )
 
 [node name="UI" parent="." instance=ExtResource( 1 )]
 offset = Vector2( -40, -25 )
