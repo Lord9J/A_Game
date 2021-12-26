@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="tpdown_final"
-run/main_scene="res://World.tscn"
+run/main_scene="res://WORLDS/TDS.tscn"
 config/icon="res://icon.png"
 
 [autoload]
