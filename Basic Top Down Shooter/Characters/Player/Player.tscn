@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://UI/player/UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Spritesheet/tile013.png" type="Texture" id=21]
 [ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Spritesheet/tile012.png" type="Texture" id=22]
 [ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Spritesheet/tile016.png" type="Texture" id=23]
+[ext_resource path="res://ARTs/MAP/future-tds/light.png" type="Texture" id=24]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -64,12 +65,14 @@ shadow_enabled = true
 [node name="Health" parent="." instance=ExtResource( 2 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+light_mask = 2
 rotation = 1.5708
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 4 )
 animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
 scale = Vector2( 0.71344, 0.71344 )
 shape = SubResource( 1 )
 
@@ -78,6 +81,12 @@ scale = Vector2( 0.652875, 0.658101 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
 script = ExtResource( 12 )
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.642041, 0.642041 )
+texture = ExtResource( 24 )
+texture_scale = 4.01
+color = Color( 0.745098, 0.917647, 0.909804, 1 )
 
 [node name="BulletPoint" type="Node2D" parent="."]
 position = Vector2( 4, 0 )
