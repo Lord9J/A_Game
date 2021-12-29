@@ -11,15 +11,18 @@ var mov_direction: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 # --- движение ----
 
-
+var ammo
 var can_take_damage=true
 
 # ----  Инициализирует переменную, как только Узел,   -----
 # к которому прикреплен скрипт, а также его дети являются частью дерева сцен.
 onready var hp_stat=$Health 
 onready var weapon = $Weapon
-# ------------------------------------------
 
+# ------------------------------------------
+	
+func _ready():
+	Globals.set_ammo(weapon.ammo)	
 	
 func _physics_process(delta):
 	
@@ -56,7 +59,9 @@ func _physics_process(delta):
 	
 	# ---    стрельба    ----
 	if Input.is_action_pressed("shoot"):
+		
 		weapon.shoot()
+
 	
 	
 
@@ -66,7 +71,6 @@ func _on_HurtBox_area_entered(body):
 	if body.is_in_group("enemy_hit") and can_take_damage :
 			Globals.player_hp-=10
 			can_take_damage=false
-			print("hp = ",hp_stat.hp)
 			yield(get_tree().create_timer(1),"timeout")
 			can_take_damage=true
 		

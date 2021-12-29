@@ -36,6 +36,7 @@ tracks/1/keys = {
 [node name="Weapon" type="Node2D"]
 script = ExtResource( 2 )
 Bullet = ExtResource( 4 )
+ammo = 15
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.172952, 0.172952 )
@@ -63,3 +64,9 @@ scale = Vector2( 0.151362, 0.378405 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 90, 170, 20, 10 )
+
+[node name="reload" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
