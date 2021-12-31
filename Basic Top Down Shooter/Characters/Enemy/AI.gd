@@ -1,3 +1,4 @@
+#ENEMY_DISTANSE
 extends Node2D
 signal state_changed(new_state)
 
@@ -76,7 +77,7 @@ func _on_Detection_body_exited(body):
 
 func _on_PatrolTimer_timeout():
 	
-	var patrol_range=50
+	var patrol_range=30
 	var random_x=rand_range(-patrol_range,patrol_range)
 	var random_y=rand_range(-patrol_range,patrol_range)
 	patrol_location=Vector2(random_x,random_y)+origin

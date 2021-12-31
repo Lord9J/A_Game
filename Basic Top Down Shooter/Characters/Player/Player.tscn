@@ -55,8 +55,8 @@ collision_mask = 13
 script = ExtResource( 3 )
 
 [node name="Фонарь" type="Light2D" parent="."]
-position = Vector2( 10.9085, 0 )
-scale = Vector2( 0.595, 0.393 )
+position = Vector2( 6.69674, 3.63618 )
+scale = Vector2( 1.39536, 0.393 )
 texture = ExtResource( 7 )
 offset = Vector2( 252.248, -9.412 )
 energy = 0.72
@@ -122,3 +122,4 @@ position = Vector2( 9.69648, 3.63618 )
 scale = Vector2( 0.218653, 0.218653 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_HurtBox_area_exited"]

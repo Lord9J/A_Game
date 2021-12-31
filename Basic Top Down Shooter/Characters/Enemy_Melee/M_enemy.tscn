@@ -1,0 +1,190 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://Characters/Enemy_Melee/M_enemy.gd" type="Script" id=1]
+[ext_resource path="res://ARTs/enemy/attack/tile009.png" type="Texture" id=2]
+[ext_resource path="res://UI/enemy/HPBar.gd" type="Script" id=3]
+[ext_resource path="res://ARTs/PNG/ProgressBar_05/BarV5_Bar.png" type="Texture" id=4]
+[ext_resource path="res://ARTs/PNG/ProgressBar_05/BarV5_ProgressBar.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Enemy_Melee/M_AI.gd" type="Script" id=6]
+[ext_resource path="res://ARTs/enemy/attack/tile002.png" type="Texture" id=7]
+[ext_resource path="res://Characters/Enemy_Melee/health.gd" type="Script" id=8]
+[ext_resource path="res://ARTs/enemy/walk/tile010.png" type="Texture" id=9]
+[ext_resource path="res://ARTs/enemy/attack/tile003.png" type="Texture" id=10]
+[ext_resource path="res://ARTs/enemy/attack/tile010.png" type="Texture" id=11]
+[ext_resource path="res://ARTs/enemy/attack/tile001.png" type="Texture" id=12]
+[ext_resource path="res://ARTs/enemy/attack/tile016.png" type="Texture" id=13]
+[ext_resource path="res://ARTs/enemy/attack/tile005.png" type="Texture" id=14]
+[ext_resource path="res://ARTs/enemy/walk/tile002.png" type="Texture" id=15]
+[ext_resource path="res://ARTs/enemy/walk/tile007.png" type="Texture" id=16]
+[ext_resource path="res://ARTs/enemy/attack/tile007.png" type="Texture" id=17]
+[ext_resource path="res://ARTs/enemy/walk/tile005.png" type="Texture" id=18]
+[ext_resource path="res://ARTs/enemy/walk/tile000.png" type="Texture" id=19]
+[ext_resource path="res://ARTs/enemy/attack/tile006.png" type="Texture" id=20]
+[ext_resource path="res://ARTs/enemy/attack/tile011.png" type="Texture" id=21]
+[ext_resource path="res://ARTs/enemy/attack/tile015.png" type="Texture" id=22]
+[ext_resource path="res://ARTs/enemy/walk/tile003.png" type="Texture" id=23]
+[ext_resource path="res://ARTs/enemy/walk/tile008.png" type="Texture" id=24]
+[ext_resource path="res://ARTs/enemy/walk/tile006.png" type="Texture" id=25]
+[ext_resource path="res://ARTs/enemy/walk/tile009.png" type="Texture" id=26]
+[ext_resource path="res://ARTs/enemy/attack/tile000.png" type="Texture" id=27]
+[ext_resource path="res://ARTs/enemy/attack/tile008.png" type="Texture" id=28]
+[ext_resource path="res://ARTs/enemy/walk/tile001.png" type="Texture" id=29]
+[ext_resource path="res://ARTs/enemy/attack/tile012.png" type="Texture" id=30]
+[ext_resource path="res://ARTs/enemy/attack/tile013.png" type="Texture" id=31]
+[ext_resource path="res://ARTs/enemy/walk/tile004.png" type="Texture" id=32]
+[ext_resource path="res://ARTs/enemy/attack/tile004.png" type="Texture" id=33]
+[ext_resource path="res://ARTs/enemy/attack/tile014.png" type="Texture" id=34]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 33 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 17 ), ExtResource( 28 ), ExtResource( 2 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 34 ), ExtResource( 22 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "attack",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 29 ), ExtResource( 15 ), ExtResource( 23 ), ExtResource( 32 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 16 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+} ]
+
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( -1, -2, -1, 1, 1, 4, 3, 4, 4.21852, 2.21852, 7.54631, 2.21852, 7.54631, 0, 4.77316, 0, 4.21852, -2.21852, 3, -4, 0, -4 )
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 11.4744
+
+[sub_resource type="CircleShape2D" id=8]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 13.0836
+
+[node name="M_enemy" type="KinematicBody2D" groups=["Enemy"]]
+scale = Vector2( 1.1748, 1.1748 )
+collision_layer = 4
+collision_mask = 15
+script = ExtResource( 1 )
+speed = 90
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0, 0.6, 1, 1 )
+position = Vector2( 5.24919, -1.16649 )
+rotation = 1.5708
+scale = Vector2( 0.0629542, 0.0629542 )
+frames = SubResource( 7 )
+animation = "attack"
+
+[node name="Тень" type="LightOccluder2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.117647 )
+position = Vector2( -2, 0 )
+occluder = SubResource( 5 )
+
+[node name="Коллизия" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 1, 1, 0.184314 )
+scale = Vector2( 0.262026, 0.294371 )
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0
+
+[node name="HurtBox" type="Area2D" parent="." groups=["enemy_hurt"]]
+modulate = Color( 1, 1, 1, 0.431373 )
+position = Vector2( -0.554631, 0 )
+scale = Vector2( 0.172795, 0.276387 )
+collision_layer = 4
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+modulate = Color( 0.0784314, 0, 1, 1 )
+position = Vector2( 4, 0 )
+scale = Vector2( 2.817, 1.652 )
+shape = SubResource( 4 )
+
+[node name="HPBar" type="TextureRect" parent="."]
+margin_left = -1.61559e-27
+margin_top = -8.0
+margin_right = 272.0
+margin_bottom = 13.0
+rect_scale = Vector2( 0.05, 0.127 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="HPBar"]
+margin_right = 271.0
+margin_bottom = 21.0
+value = 100.0
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="M_AI" type="Node2D" parent="." groups=["enemy"]]
+script = ExtResource( 6 )
+
+[node name="HitArea" type="Area2D" parent="M_AI" groups=["enemy_eat"]]
+scale = Vector2( 1.30116, 1.30116 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="M_AI/HitArea"]
+scale = Vector2( 1.00771, 1.00771 )
+shape = SubResource( 8 )
+
+[node name="Detection" type="Area2D" parent="M_AI"]
+modulate = Color( 1, 1, 1, 0.309804 )
+scale = Vector2( 2.12165, 2.12165 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="M_AI/Detection"]
+modulate = Color( 1, 0.356863, 0.717647, 1 )
+scale = Vector2( 3.39131, 3.39131 )
+shape = SubResource( 6 )
+
+[node name="Memory" type="Area2D" parent="M_AI"]
+modulate = Color( 0.027451, 1, 0.384314, 0.309804 )
+scale = Vector2( 4.92963, 4.92963 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="M_AI/Memory"]
+modulate = Color( 1, 0.356863, 0.717647, 1 )
+scale = Vector2( 3.39131, 3.39131 )
+shape = SubResource( 6 )
+
+[node name="PatrolTimer" type="Timer" parent="M_AI"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Attack" type="Timer" parent="M_AI"]
+wait_time = 2.0
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="M_AI"]
+scale = Vector2( 1.22798, 1 )
+enabled = true
+cast_to = Vector2( 70, 0 )
+
+[node name="health" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="body_entered" from="M_AI/HitArea" to="M_AI" method="_on_HitArea_body_entered"]
+[connection signal="body_exited" from="M_AI/HitArea" to="M_AI" method="_on_HitArea_body_exited"]
+[connection signal="body_entered" from="M_AI/Detection" to="M_AI" method="_on_Detection_body_entered"]
+[connection signal="body_exited" from="M_AI/Detection" to="M_AI" method="_on_Detection_body_exited"]
+[connection signal="body_entered" from="M_AI/Memory" to="M_AI" method="_on_Memory_body_entered"]
+[connection signal="body_exited" from="M_AI/Memory" to="M_AI" method="_on_Memory_body_exited"]
+[connection signal="timeout" from="M_AI/PatrolTimer" to="M_AI" method="_on_PatrolTimer_timeout"]
+[connection signal="timeout" from="M_AI/Attack" to="M_AI" method="_on_Attack_timeout"]

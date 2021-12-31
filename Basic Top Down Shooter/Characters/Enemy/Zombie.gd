@@ -13,8 +13,8 @@ export(int) var speed=50
 # к которому прикреплен скрипт, а также его дети являются частью дерева сцен.
 onready var hp_stat=$health 
 onready var ai = $AI	
-onready var weapon=$Weapon
 onready var hp_bar=$HPBar
+onready var weapon=$Weapon
 	
 # ------------------------------------------
 

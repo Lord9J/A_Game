@@ -24,10 +24,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Enemy/FSM.gd"
 }, {
+"base": "Node",
+"class": "FiniteStateMachine_2",
+"language": "GDScript",
+"path": "res://Characters/Enemy_Melee/FSM.gd"
+}, {
 "base": "Area2D",
 "class": "Hitbox",
 "language": "GDScript",
 "path": "res://Characters/Hitbox.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "M_enemy",
+"language": "GDScript",
+"path": "res://Characters/Enemy_Melee/M_enemy.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -53,7 +63,9 @@ _global_script_class_icons={
 "Bullet": "",
 "Character": "res://ARTs/player/idle.png",
 "FiniteStateMachine": "",
+"FiniteStateMachine_2": "",
 "Hitbox": "",
+"M_enemy": "",
 "Player": "",
 "Ship": "",
 "Weapon": "",
@@ -70,6 +82,10 @@ config/icon="res://icon.png"
 
 GlobalSignals="*res://globals/GlobalSignals.gd"
 Globals="*res://globals/Globals.tscn"
+
+[debug]
+
+settings/fps/force_fps=140
 
 [display]
 

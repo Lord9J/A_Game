@@ -69,7 +69,7 @@ region_enabled = true
 region_rect = Rect2( 142, 78, 34, 19 )
 
 [node name="reload" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 1.35
 one_shot = true
 
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]

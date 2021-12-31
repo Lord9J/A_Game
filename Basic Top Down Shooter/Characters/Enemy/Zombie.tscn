@@ -115,8 +115,6 @@ shape = SubResource( 6 )
 wait_time = 3.0
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
 [node name="health" type="Node2D" parent="."]
 script = ExtResource( 8 )
 

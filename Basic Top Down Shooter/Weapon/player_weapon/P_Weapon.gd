@@ -18,9 +18,7 @@ onready var reload=$reload
 func shoot():
 	
 	if attack_cooldown.is_stopped() and Bullet!=null and reload.is_stopped():
-			print("psps")
 			if Globals.player_ammo>0:	
-				print(Globals.player_ammo)
 				Globals.player_ammo-=1
 				var bullet_instance=Bullet.instance()
 				var direction = (gun_direction.global_position - end_gun.global_position).normalized()
