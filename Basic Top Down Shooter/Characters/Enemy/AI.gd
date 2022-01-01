@@ -39,8 +39,8 @@ func _physics_process(delta: float) ->void:
 			if player != null and weapon !=null:
 				actor.rotate_toward(player.global_position)
 				var angle_player=global_position.direction_to(player.global_position).angle()
-				if abs(actor.rotation-angle_player)<0.1:
-					weapon.shoot()
+				#if abs(actor.rotation-angle_player)<0.1:
+				weapon.shoot()
 			else:
 				pass
 		_:

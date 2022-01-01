@@ -17,10 +17,11 @@ export(int) var speed=50
 onready var hp_stat=$health 
 onready var ai = $M_AI	
 onready var hp_bar=$HPBar
+onready var sprite=$AnimatedSprite
 	
 # ------------------------------------------
 var velocity: Vector2 = Vector2.ZERO
-
+var rotation_speed = PI
 
 func _ready() ->void:
 	ai.initalize(self)
@@ -42,34 +43,49 @@ func _process(delta):
 	if hp_stat.hp<=0:
 		queue_free();
 
+	#  ====== поворот =========
+	if ai.spot:
+		var v = player.global_position - global_position
+		var angle=velocity.angle()
+		var r = rotation
+		var angle_delta=rotation_speed*delta
+		angle=lerp_angle(r,angle,1.0)
+		angle=clamp(angle,r-angle_delta,r+angle_delta)
+		rotation=angle
+	# ==========================
+	
+	#rotation =lerp_angle(rotation,velocity.angle(),0.1)
+	
+	
+	
 
 
-func navigate():	# Define the next position to go to
-	if ai.path.size() > 0:
-		velocity = global_position.direction_to(ai.path[1]) * speed
-		
-		# If reached the destination, remove this point from path array
-		if global_position == ai.path[0]:
-			ai.path.pop_front()
 
-
-func generate_path():	# It's obvious
+func generate_path():	
 	if ai.levelNavigation != null and ai.player != null:
 		ai.path = ai.levelNavigation.get_simple_path(global_position, ai.player.global_position, false)
 
+func navigate():	# Определите следующую позицию для перехода
+	if ai.path.size() > 0:
+		velocity = global_position.direction_to(ai.path[1]) * speed
+		
+	
+		
+		# Если вы достигли пункта назначения, удалите эту точку из массива путей
+		if global_position == ai.path[0]:
+			ai.path.pop_front()
 
 func move():
 	velocity = move_and_slide(velocity)
 
 
-
-
+# 100% поворт игроку вблизи
 func rotate_toward(location:Vector2):
-	rotation=lerp(rotation,global_position.direction_to(location).angle(),0.1)
-	print(rotation)
+	rotation=lerp_angle(rotation,global_position.direction_to(location).angle(),1.0)
+
 	
 func velocity_toward(location:Vector2 )->Vector2:
-	return global_position.direction_to(location)*speed
+	return global_position.direction_to(location)*20
 
 func move_slide():
 	return move_and_slide(Vector2(speed,0).rotated(rotation))
@@ -95,6 +111,9 @@ func _on_HurtBox_area_entered(body):
 	if body.is_in_group("Bullet"):
 		hp_stat.hp=hp_stat.hp-20
 		$HPBar.set_percent_value_int(float(hp_stat.hp)/hp_stat.max_hp*100)
+		
+		ai._on_Detection_body_entered(player)
+		
 
 func _on_Trigger_body_exited(body):
 	player = null	

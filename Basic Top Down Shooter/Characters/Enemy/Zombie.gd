@@ -30,7 +30,7 @@ func _process(delta):
 
 
 func rotate_toward(location:Vector2):
-	rotation=lerp(rotation,global_position.direction_to(location).angle(),0.1)
+	rotation=lerp_angle(rotation,global_position.direction_to(location).angle(),1.0)
 	
 func velocity_toward(location:Vector2 )->Vector2:
 	return global_position.direction_to(location)*speed

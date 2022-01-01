@@ -2524,5 +2524,5 @@ color = Color( 0.670588, 0.396078, 0.298039, 1 )
 position = Vector2( 998, 363 )
 scale = Vector2( 1.8548, 1.8548 )
 
-[node name="M_enemy" parent="Враги" instance=ExtResource( 43 )]
-position = Vector2( 935, 584 )
+[node name="M_enemy2" parent="Враги" instance=ExtResource( 43 )]
+position = Vector2( 765, 666 )
