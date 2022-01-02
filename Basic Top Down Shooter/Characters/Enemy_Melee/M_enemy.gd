@@ -23,6 +23,9 @@ onready var sprite=$AnimatedSprite
 var velocity: Vector2 = Vector2.ZERO
 var rotation_speed = PI
 
+var blood = load("res://Presets/Blood.tscn")
+
+
 func _ready() ->void:
 	ai.initalize(self)
 	
@@ -41,6 +44,11 @@ func _ready() ->void:
 func _process(delta):
 
 	if hp_stat.hp<=0:
+		var blood_instance=blood.instance()
+		get_tree().current_scene.add_child(blood_instance)
+		blood_instance.global_position=global_position
+		blood_instance.rotation=global_position.angle_to_point(player.global_position)
+		
 		queue_free();
 
 	#  ====== поворот =========

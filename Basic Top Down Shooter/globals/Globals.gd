@@ -6,6 +6,9 @@ export (int) var player_hp
 export (int) var player_ammo
 
 
+var player = null
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_hp=100

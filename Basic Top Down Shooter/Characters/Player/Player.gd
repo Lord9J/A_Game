@@ -26,6 +26,7 @@ onready var weapon = $Weapon
 	
 func _ready():
 	Globals.set_ammo(weapon.ammo)	
+	Globals.player=self
 	
 	
 func _physics_process(delta):
@@ -57,7 +58,7 @@ func _physics_process(delta):
 	move_vec = move_vec.normalized()
 	move_and_collide(move_vec * Globals.player_speed * delta)
 	
-	var look_vec = get_global_mouse_position() - global_position
+	var look_vec =(get_global_mouse_position() - global_position)
 	global_rotation = atan2(look_vec.y, look_vec.x)
 	
 	
