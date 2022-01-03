@@ -51,6 +51,10 @@ func _physics_process(delta):
 		isMoving=true
 		move_vec.x += 1
 		
+	if Input.is_action_pressed("ul_shift"):
+		Globals.player_speed=300
+	if Input.is_action_just_released("ul_shift"):	
+		Globals.player_speed=140
 	
 	if (!isMoving):
 		$AnimatedSprite.play("idle")
