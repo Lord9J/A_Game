@@ -21,6 +21,7 @@ var eat=false #чтобы терял по 1 хп когда зомби ест
 # к которому прикреплен скрипт, а также его дети являются частью дерева сцен.
 onready var hp_stat=$Health 
 onready var weapon = $Weapon
+onready var camera=$Camera2D
 
 # ------------------------------------------
 	
@@ -31,8 +32,15 @@ func _ready():
 	
 func _physics_process(delta):
 	
-	var move_vec = Vector2()
+	# Движение камеры след за курсором
+	var mouse_pos=get_global_mouse_position()
+	camera.offset_h=(mouse_pos.x-global_position.x)/(1920/2.0)
+	camera.offset_v=(mouse_pos.y-global_position.y)/(1080/2.0)
+	# Движение камеры след за курсором
 
+
+	var move_vec = Vector2()
+	
 	var isMoving: bool=false
 	if Input.is_action_pressed("move_up"):
 		$AnimatedSprite.play("walk")

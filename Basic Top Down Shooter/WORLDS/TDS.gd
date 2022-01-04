@@ -2,7 +2,6 @@ extends Node2D
 
 onready var bullet_manager = $BulletManager
 onready var player:Player = $Player
-onready var nav = $Navigation2D
 
 #onready var zombie = preload("res://Characters/Enemy/Zombie.tscn")
 

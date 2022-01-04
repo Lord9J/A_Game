@@ -5,8 +5,7 @@ var zoom_max=Vector2(0.315,0.315)
 var zoom_speed=Vector2(0.05,0.05)
 var des_zoom=zoom
 
-func _process(delta):
-	
+func _process(delta):	
 	zoom=lerp(zoom,des_zoom,.2)
 	
 func _input(event):
