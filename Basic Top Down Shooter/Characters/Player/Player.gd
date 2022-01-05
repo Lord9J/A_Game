@@ -13,6 +13,7 @@ var mov_direction: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 # --- движение ----
 
+var reload=false
 var ammo
 var can_take_damage=true
 var eat=false #чтобы терял по 1 хп когда зомби ест
@@ -22,6 +23,7 @@ var eat=false #чтобы терял по 1 хп когда зомби ест
 onready var hp_stat=$Health 
 onready var weapon = $Weapon
 onready var camera=$Camera2D
+onready var ui = $UI/GameMenu
 
 # ------------------------------------------
 	
@@ -43,19 +45,23 @@ func _physics_process(delta):
 	
 	var isMoving: bool=false
 	if Input.is_action_pressed("move_up"):
-		$AnimatedSprite.play("walk")
+		if (reload==false):
+			$AnimationPlayer.play("walk")
 		isMoving=true
 		move_vec.y -= 1
 	if Input.is_action_pressed("move_down"):
-		$AnimatedSprite.play("walk")
+		if (reload==false):
+			$AnimationPlayer.play("walk")
 		isMoving=true
 		move_vec.y += 1
 	if Input.is_action_pressed("move_left"):
-		$AnimatedSprite.play("walk")
+		if (reload==false):
+			$AnimationPlayer.play("walk")
 		isMoving=true
 		move_vec.x -= 1
 	if Input.is_action_pressed("move_right"):
-		$AnimatedSprite.play("walk")
+		if (reload==false):
+			$AnimationPlayer.play("walk")
 		isMoving=true
 		move_vec.x += 1
 		
@@ -65,7 +71,8 @@ func _physics_process(delta):
 		Globals.player_speed=140
 	
 	if (!isMoving):
-		$AnimatedSprite.play("idle")
+		if (reload==false):
+			$AnimationPlayer.play("idle")
 
 	move_vec = move_vec.normalized()
 	move_and_collide(move_vec * Globals.player_speed * delta)
@@ -74,11 +81,18 @@ func _physics_process(delta):
 	global_rotation = atan2(look_vec.y, look_vec.x)
 	
 	
+	if Globals.player_ammo==0:
+		reload=true
+		$AnimationPlayer.play("reload")
+	else:
+		reload=false
+	
+	
+
 	
 	
 	# ---    стрельба    ----
 	if Input.is_action_pressed("shoot"):
-		
 		weapon.shoot()
 
 

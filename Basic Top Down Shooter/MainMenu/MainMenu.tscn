@@ -1,15 +1,68 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://ARTs/Dungeon tileset.png" type="Texture" id=1]
-[ext_resource path="res://MainMenu/assets/main_menu/label_continue.png" type="Texture" id=2]
-[ext_resource path="res://MainMenu/assets/main_menu/label_new_game.png" type="Texture" id=3]
-[ext_resource path="res://MainMenu/assets/main_menu/label_options.png" type="Texture" id=4]
+[ext_resource path="res://MainMenu/MainMenu.tres" type="Theme" id=1]
+[ext_resource path="res://ARTs/MAP/future-tds/dark.png" type="Texture" id=2]
+[ext_resource path="res://ARTs/noise_combined.png" type="Texture" id=3]
 [ext_resource path="res://MainMenu/assets/main_menu/version.png" type="Texture" id=5]
+[ext_resource path="res://Planet_Generator/Planets/Rivers/Rivers.tscn" type="PackedScene" id=6]
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=7]
+[ext_resource path="res://Shaders/noise_combined.png" type="Texture" id=8]
+[ext_resource path="res://WORLDS/Purple Nebula 1 - 1024x1024.png" type="Texture" id=9]
+
+[sub_resource type="Shader" id=1681]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_img;
+uniform float speed = 1.0;
+uniform vec4 smoke_color : hint_color;
+
+void fragment(){
+	vec2 uv1 = vec2(UV.x + TIME*speed, UV.y);
+	vec2 uv2 = vec2(UV.x - TIME*speed, UV.y);
+	vec2 uv3 = vec2(UV.x, UV.y + TIME*speed);
+	
+	
+	float noise_r = texture( noise_img, uv1 ).r;
+	float noise_g = texture( noise_img, uv2 ).g;
+	float noise_b = texture( noise_img, uv3 ).b;
+	
+	vec3 new_color = vec3(noise_r, noise_g, noise_b);
+	
+	float new_alpha = noise_r * noise_g * noise_b;
+	
+	COLOR.rgb = smoke_color.rgb;//texture(TEXTURE, UV).rgb;
+	COLOR.a = clamp(new_alpha * 5.0 * texture(TEXTURE, UV).a, 0.0, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=1680]
+shader = SubResource( 1681 )
+shader_param/speed = 0.022
+shader_param/smoke_color = Color( 0.231373, 0.0392157, 0.282353, 1 )
+shader_param/noise_img = ExtResource( 3 )
+
+[sub_resource type="Shader" id=1682]
+code = "shader_type canvas_item;
+ uniform vec2 dir;
+uniform sampler2D col_ramp;
+ void fragment( )
+ {
+	vec2 half = abs(0.5 - UV);
+  	vec4 tex = texture(TEXTURE, UV + dir * TIME);
+ 	vec4 col = texture(col_ramp, vec2(tex.a - length(half), 0));
+	COLOR = tex * col;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=1679]
+shader = SubResource( 1682 )
+shader_param/dir = Vector2( 0.01, 0 )
+shader_param/col_ramp = ExtResource( 8 )
 
 [node name="MainMenu" type="MarginContainer"]
-margin_right = 1366.0
-margin_bottom = 768.0
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
 custom_constants/margin_right = 120
 custom_constants/margin_top = 80
 custom_constants/margin_left = 120
@@ -19,78 +72,111 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = 120.0
+margin_top = 80.0
+margin_right = 1800.0
+margin_bottom = 1000.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fire" type="Sprite" parent="CenterContainer"]
+modulate = Color( 1, 1, 1, 0.537255 )
+material = SubResource( 1680 )
+position = Vector2( 1229, 437 )
+scale = Vector2( 17.6269, 17.6269 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="Space_fon" type="Sprite" parent="CenterContainer"]
+material = SubResource( 1679 )
+position = Vector2( 888, 564 )
+scale = Vector2( 2.08863, 2.08863 )
+texture = ExtResource( 9 )
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 120.0
 margin_top = 80.0
-margin_right = 1246.0
-margin_bottom = 688.0
+margin_right = 1800.0
+margin_bottom = 1000.0
 mouse_filter = 0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 250.0
-margin_bottom = 608.0
+margin_right = 481.0
+margin_bottom = 920.0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_right = 250.0
-margin_bottom = 14.0
-text = "KOCM"
+margin_right = 481.0
+margin_bottom = 78.0
+text = "Название игры"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Logo" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 250.0
-margin_bottom = 18.0
+margin_top = 82.0
+margin_right = 481.0
+margin_bottom = 82.0
 stretch_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 22.0
-margin_right = 250.0
-margin_bottom = 542.0
+margin_top = 86.0
+margin_right = 481.0
+margin_bottom = 854.0
 size_flags_vertical = 3
 custom_constants/separation = 30
 alignment = 1
 
 [node name="Continue" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 162.0
-margin_right = 250.0
-margin_bottom = 204.0
-icon = ExtResource( 2 )
+margin_top = 171.0
+margin_right = 481.0
+margin_bottom = 255.0
+text = "Продолжить"
 
 [node name="New_Game" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 234.0
-margin_right = 250.0
-margin_bottom = 276.0
-icon = ExtResource( 3 )
+margin_top = 285.0
+margin_right = 481.0
+margin_bottom = 369.0
+text = "Новая игра"
 
-[node name="Options" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 306.0
-margin_right = 250.0
-margin_bottom = 358.0
-icon = ExtResource( 4 )
+[node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 399.0
+margin_right = 481.0
+margin_bottom = 483.0
+text = "Настройки"
+
+[node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 513.0
+margin_right = 481.0
+margin_bottom = 597.0
+text = "Выход"
 
 [node name="Version" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-margin_top = 546.0
-margin_right = 250.0
-margin_bottom = 608.0
+margin_top = 858.0
+margin_right = 481.0
+margin_bottom = 920.0
 texture = ExtResource( 5 )
 stretch_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-margin_left = 254.0
-margin_right = 1126.0
-margin_bottom = 608.0
+margin_left = 485.0
+margin_right = 1680.0
+margin_bottom = 920.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Characters" type="TextureRect" parent="HBoxContainer/CenterContainer"]
-margin_left = 244.0
-margin_top = 208.0
-margin_right = 628.0
-margin_bottom = 400.0
-texture = ExtResource( 1 )
-stretch_mode = 3
+[node name="ПЛанета" parent="HBoxContainer/CenterContainer" instance=ExtResource( 6 )]
+modulate = Color( 1, 0.745098, 0.972549, 1 )
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 597.0
+margin_top = 460.0
+margin_right = 597.0
+margin_bottom = 460.0
 
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_button_down"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

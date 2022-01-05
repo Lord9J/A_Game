@@ -1,7 +1,7 @@
 extends "res://Planet_Generator/Planets/Planet.gd"
 
 func _ready():
-	set_pixels(300)
+	set_pixels(700)
 
 func set_pixels(amount):
 	$Land.material.set_shader_param("pixels", amount)

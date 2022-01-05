@@ -16,5 +16,17 @@ func _ready():
 #	pass
 
 
-func _on_Continue_button_down():
-	get_tree().change_scene("res://World.tscn")
+
+
+func _on_Exit_pressed():
+	get_tree().quit()
+
+
+func _on_Continue_pressed():
+	get_tree().set_deferred("paused", false)
+	get_tree().change_scene("res://WORLDS/Space_ship.tscn")
+
+
+
+func _on_Settings_pressed():
+	get_tree().change_scene("res://MainMenu/Settings.tscn")
