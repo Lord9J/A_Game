@@ -1,0 +1,255 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://fonts/xolonium/Xolonium.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ARTs/MAP/YORqau.jpg" type="Texture" id=2]
+[ext_resource path="res://ARTs/background.png" type="Texture" id=3]
+[ext_resource path="res://ARTs/UI/MainPanel02.png" type="Texture" id=4]
+[ext_resource path="res://ARTs/UI/Button15.png" type="Texture" id=5]
+[ext_resource path="res://MainMenu/Console.gd" type="Script" id=6]
+[ext_resource path="res://ARTs/UI/Grid.png" type="Texture" id=7]
+[ext_resource path="res://ARTs/New_UI/Elements/IconD15.png" type="Texture" id=8]
+[ext_resource path="res://ARTs/UI/MAP1.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 165, 21 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 165, 21 )
+modulate_color = Color( 1, 1, 1, 0.658824 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 165, 21 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 302, 403 )
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="Theme" id=2]
+Button/colors/font_color = Color( 0.662745, 1, 0.992157, 1 )
+Button/fonts/font = ExtResource( 1 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
+Label/colors/font_color = Color( 0.662745, 1, 0.992157, 1 )
+Label/fonts/font = ExtResource( 1 )
+Panel/styles/panel = SubResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 82, 62 )
+
+[node name="CanvasLayer" type="CanvasLayer"]
+pause_mode = 2
+
+[node name="Console" type="Control" parent="."]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+theme = SubResource( 2 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="All" type="Control" parent="Console"]
+pause_mode = 2
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Панельки" type="Control" parent="Console/All"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer4" type="MarginContainer" parent="Console/All/Панельки"]
+margin_left = -46.2099
+margin_top = 874.0
+margin_right = 153.79
+margin_bottom = 912.0
+rect_scale = Vector2( 10.4061, 6.79315 )
+rect_pivot_offset = Vector2( -3.805, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Console/All/Панельки/MarginContainer4"]
+margin_right = 199.0
+margin_bottom = 38.0
+
+[node name="MarginContainer5" type="MarginContainer" parent="Console/All/Панельки"]
+margin_left = 2108.0
+margin_top = 190.0
+margin_right = 2308.0
+margin_bottom = 228.0
+rect_rotation = 180.0
+rect_scale = Vector2( 10.4061, 6.79315 )
+rect_pivot_offset = Vector2( -3.805, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Console/All/Панельки/MarginContainer5"]
+margin_right = 200.0
+margin_bottom = 38.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="Console/All/Панельки"]
+margin_left = 1227.71
+margin_top = 127.302
+margin_right = 1508.71
+margin_bottom = 165.302
+rect_scale = Vector2( 2.843, 25.602 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Console/All/Панельки/MarginContainer2"]
+margin_right = 281.0
+margin_bottom = 38.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Console/All"]
+margin_left = 1316.0
+margin_top = 147.0
+margin_right = 1597.0
+margin_bottom = 186.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Console/All/MarginContainer"]
+margin_right = 281.0
+margin_bottom = 39.0
+text = "Задания:"
+
+[node name="Mission1" type="MarginContainer" parent="Console/All"]
+margin_left = 137.0
+margin_top = 394.0
+margin_right = 418.0
+margin_bottom = 433.0
+rect_scale = Vector2( 0.361909, 1.49828 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Console/All/Mission1"]
+margin_right = 281.0
+margin_bottom = 39.0
+custom_styles/normal = SubResource( 6 )
+
+[node name="Mis" type="MarginContainer" parent="Console/All"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map1" type="Sprite" parent="Console/All/Mis"]
+visible = false
+position = Vector2( 1624, 796 )
+scale = Vector2( 1.3826, 1.52323 )
+texture = ExtResource( 9 )
+
+[node name="Mission2" type="MarginContainer" parent="Console/All"]
+margin_left = 799.0
+margin_top = 347.0
+margin_right = 1080.0
+margin_bottom = 386.0
+rect_scale = Vector2( 0.361909, 1.49828 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Console/All/Mission2"]
+margin_right = 281.0
+margin_bottom = 39.0
+custom_styles/normal = SubResource( 6 )
+
+[node name="nazad" type="MarginContainer" parent="Console/All"]
+margin_left = 66.0
+margin_top = 55.0
+margin_right = 347.0
+margin_bottom = 94.0
+rect_scale = Vector2( 0.996402, 1.25561 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_nazad" type="Button" parent="Console/All/nazad"]
+margin_right = 281.0
+margin_bottom = 39.0
+text = "Назад"
+
+[node name="S" type="MarginContainer" parent="Console/All"]
+margin_left = 1285.0
+margin_top = 217.0
+margin_right = 1850.0
+margin_bottom = 424.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Opis" type="Label" parent="Console/All/S"]
+margin_right = 565.0
+margin_bottom = 207.0
+text = "Тест
+тест
+тест
+тест
+"
+
+[node name="CenterContainer" type="CenterContainer" parent="Console/All"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Console/All/CenterContainer"]
+modulate = Color( 0.556863, 0.992157, 0.839216, 0.87451 )
+position = Vector2( 608, 533 )
+scale = Vector2( 0.651304, 0.651304 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="CenterContainer3" type="CenterContainer" parent="Console/All"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Console/All/CenterContainer3"]
+modulate = Color( 0.556863, 0.992157, 0.839216, 0.87451 )
+position = Vector2( 608, 533 )
+scale = Vector2( 2.94207, 2.94207 )
+z_index = -1
+texture = ExtResource( 7 )
+
+[node name="CenterContainer2" type="CenterContainer" parent="Console/All"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Console/All/CenterContainer2"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 934.672, 522.402 )
+scale = Vector2( 33.405, 33.405 )
+z_index = -2
+texture = ExtResource( 3 )
+
+[connection signal="mouse_entered" from="Console/All/Mission1/Button" to="Console" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Console/All/Mission1/Button" to="Console" method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="Console/All/Mission1/Button" to="Console" method="_on_Button_pressed"]
+[connection signal="pressed" from="Console/All/nazad/Button_nazad" to="Console" method="_on_Button_nazad_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=1677 format=2]
+[gd_scene load_steps=1678 format=2]
 
 [ext_resource path="res://ARTs/MAP/post-apoc-tds/background.png" type="Texture" id=1]
 [ext_resource path="res://ARTs/MAP/future-tds/background/lamp.png" type="Texture" id=2]
@@ -105,7 +105,10 @@
 [ext_resource path="res://ARTs/MAP/objects/Sprite-0002.png" type="Texture" id=103]
 [ext_resource path="res://BulletManager.gd" type="Script" id=104]
 [ext_resource path="res://WORLDS/PauseManager.tscn" type="PackedScene" id=105]
-[ext_resource path="res://Characters/Enemy_Melee/M_enemy.tscn" type="PackedScene" id=106]
+[ext_resource path="res://MainMenu/Console.tscn" type="PackedScene" id=106]
+
+[sub_resource type="RectangleShape2D" id=1691]
+extents = Vector2( 9.62324, 8.80416 )
 
 [sub_resource type="Shader" id=1689]
 code = "shader_type canvas_item;
@@ -10764,6 +10767,17 @@ glow_intensity = 0.76
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 99 )
 
+[node name="Console2" parent="." instance=ExtResource( 106 )]
+
+[node name="Console" type="Area2D" parent="."]
+position = Vector2( 577, 127 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Console"]
+position = Vector2( -13.5, 1 )
+scale = Vector2( 3.27333, 3.63465 )
+z_index = 2
+shape = SubResource( 1691 )
+
 [node name="PauseManager" parent="." instance=ExtResource( 105 )]
 
 [node name="BulletManager" type="Node2D" parent="."]
@@ -10874,5 +10888,5 @@ position = Vector2( 136, 116 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1688 )
 
-[node name="M_enemy" parent="." instance=ExtResource( 106 )]
-position = Vector2( 86, 219 )
+[connection signal="body_entered" from="Console" to="Player" method="_on_Console_body_entered"]
+[connection signal="body_exited" from="Console" to="Player" method="_on_Console_body_exited"]

@@ -76,7 +76,7 @@ script = ExtResource( 1 )
 speed = 90
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-modulate = Color( 0, 0.6, 1, 1 )
+modulate = Color( 0, 0.117647, 0.0196078, 1 )
 position = Vector2( 5.24919, -1.16649 )
 rotation = 1.5708
 scale = Vector2( 0.0629542, 0.0629542 )

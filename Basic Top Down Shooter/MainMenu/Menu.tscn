@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ARTs/MAP/future-tds/dark.png" type="Texture" id=1]
+[ext_resource path="res://ARTs/noise_combined.png" type="Texture" id=2]
+[ext_resource path="res://ARTs/background.png" type="Texture" id=3]
+[ext_resource path="res://MainMenu/Menu.gd" type="Script" id=6]
+[ext_resource path="res://MainMenu/MainMenu.tres" type="Theme" id=7]
+
+[sub_resource type="Shader" id=1678]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_img;
+uniform float speed = 1.0;
+uniform vec4 smoke_color : hint_color;
+
+void fragment(){
+	vec2 uv1 = vec2(UV.x + TIME*speed, UV.y);
+	vec2 uv2 = vec2(UV.x - TIME*speed, UV.y);
+	vec2 uv3 = vec2(UV.x, UV.y + TIME*speed);
+	
+	
+	float noise_r = texture( noise_img, uv1 ).r;
+	float noise_g = texture( noise_img, uv2 ).g;
+	float noise_b = texture( noise_img, uv3 ).b;
+	
+	vec3 new_color = vec3(noise_r, noise_g, noise_b);
+	
+	float new_alpha = noise_r * noise_g * noise_b;
+	
+	COLOR.rgb = smoke_color.rgb;//texture(TEXTURE, UV).rgb;
+	COLOR.a = clamp(new_alpha * 5.0 * texture(TEXTURE, UV).a, 0.0, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=1676]
+shader = SubResource( 1678 )
+shader_param/speed = 0.022
+shader_param/smoke_color = Color( 0.972549, 0.168627, 0.203922, 1 )
+shader_param/noise_img = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -207.5
+margin_right = 207.5
+theme = ExtResource( 7 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 489.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fire" type="Sprite" parent="CenterContainer"]
+modulate = Color( 1, 1, 1, 0.537255 )
+material = SubResource( 1676 )
+position = Vector2( 152.5, 483 )
+scale = Vector2( 17.6269, 17.6269 )
+z_index = 1
+texture = ExtResource( 1 )
+
+[node name="Space_fon" type="Sprite" parent="CenterContainer"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 221.5, 600 )
+scale = Vector2( 15.5796, 15.5796 )
+texture = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 489.0
+margin_bottom = 1080.0
+mouse_filter = 0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 489.0
+margin_bottom = 1080.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 489.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 489.0
+margin_bottom = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 164.0
+margin_right = 489.0
+margin_bottom = 242.0
+text = " ВЫ ПОГИБЛИ"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+margin_top = 246.0
+margin_right = 489.0
+margin_bottom = 246.0
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 250.0
+margin_right = 489.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+custom_constants/separation = 30
+alignment = 1
+
+[node name="New_Game2" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 259.0
+margin_right = 489.0
+margin_bottom = 343.0
+text = "Загрузка"
+
+[node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 373.0
+margin_right = 489.0
+margin_bottom = 457.0
+text = "Главное меню"
+
+[node name="Settings3" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 487.0
+margin_right = 489.0
+margin_bottom = 571.0
+text = "Рабочий стол"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Settings3" to="." method="_on_Settings3_pressed"]

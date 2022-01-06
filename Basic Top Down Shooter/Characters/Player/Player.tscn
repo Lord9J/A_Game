@@ -1,28 +1,11 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://UI/player/UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=3]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile001.png" type="Texture" id=4]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile002.png" type="Texture" id=5]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile000.png" type="Texture" id=6]
-[ext_resource path="res://ARTs/light/flashlight-2.png" type="Texture" id=7]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile016.png" type="Texture" id=8]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile010.png" type="Texture" id=9]
+[ext_resource path="res://ARTs/light/фонарь2.png" type="Texture" id=5]
 [ext_resource path="res://Weapon/player_weapon/P_Weapon.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile012.png" type="Texture" id=11]
 [ext_resource path="res://Characters/Player/Camera2D_controller.gd" type="Script" id=12]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile015.png" type="Texture" id=13]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile011.png" type="Texture" id=14]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile008.png" type="Texture" id=15]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile013.png" type="Texture" id=16]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile006.png" type="Texture" id=17]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile007.png" type="Texture" id=18]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile009.png" type="Texture" id=19]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile014.png" type="Texture" id=20]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile004.png" type="Texture" id=21]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile005.png" type="Texture" id=22]
-[ext_resource path="res://ARTs/player/NEW_PLAYERSSS/Aseprite/walk/tile003.png" type="Texture" id=23]
 [ext_resource path="res://ARTs/MAP/future-tds/light.png" type="Texture" id=24]
 [ext_resource path="res://ARTs/player/palyer2/Top-down chest.png" type="Texture" id=25]
 [ext_resource path="res://ARTs/player/palyer2/Top-down shoulder R.png" type="Texture" id=26]
@@ -38,19 +21,6 @@
 [ext_resource path="res://ARTs/player/palyer2/Top-down foot L.png" type="Texture" id=36]
 [ext_resource path="res://ARTs/player/palyer2/Top-down hip L.png" type="Texture" id=37]
 [ext_resource path="res://ARTs/player/palyer2/Top-down hip R.png" type="Texture" id=38]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "idle",
-"speed": 1.98
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 19 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk",
-"speed": 15.03
-} ]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 11.0454
@@ -2345,22 +2315,19 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource( 3 )
 
-[node name="Фонарь" type="Light2D" parent="."]
-position = Vector2( 12.1206, 4.76837e-07 )
-scale = Vector2( 1.39536, 0.393 )
-texture = ExtResource( 7 )
-offset = Vector2( 252.248, -9.412 )
-energy = 0.72
+[node name="FlashLight" type="Light2D" parent="."]
+position = Vector2( 11.9255, 0.661043 )
+scale = Vector2( 1.31914, 1.31914 )
+texture = ExtResource( 5 )
+offset = Vector2( 227.12, 0 )
+texture_scale = 0.29
+energy = 1.11
 shadow_enabled = true
+shadow_gradient_length = 21.0
+shadow_filter = 4
+shadow_filter_smooth = 2.5
 
 [node name="Health" parent="." instance=ExtResource( 2 )]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-visible = false
-rotation = 1.5708
-scale = Vector2( 0.1, 0.1 )
-frames = SubResource( 4 )
-animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
@@ -2376,12 +2343,12 @@ script = ExtResource( 12 )
 [node name="Light2D" type="Light2D" parent="."]
 scale = Vector2( 0.642041, 0.642041 )
 texture = ExtResource( 24 )
-texture_scale = 4.01
+texture_scale = 2.06
 color = Color( 0.745098, 0.917647, 0.909804, 1 )
-energy = 0.58
+energy = 1.23
 
 [node name="BulletPoint" type="Node2D" parent="."]
-position = Vector2( 4, 0 )
+position = Vector2( 12.1321, 0.297516 )
 scale = Vector2( 0.838417, 0.838417 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]

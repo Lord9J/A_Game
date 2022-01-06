@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://fonts/source-code-pro/SourceCodePro.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1681]
+bg_color = Color( 0.329412, 0.839216, 0.937255, 0.172549 )
+
+[sub_resource type="StyleBoxFlat" id=1682]
+bg_color = Color( 0.329412, 0.839216, 0.937255, 0.172549 )
+border_width_left = 5
+border_width_bottom = 5
+corner_radius_top_right = 114
+
+[sub_resource type="StyleBoxFlat" id=1677]
+content_margin_right = 37.0
+bg_color = Color( 0.329412, 0.839216, 0.937255, 0.172549 )
+border_width_left = 8
+border_width_bottom = 6
+border_color = Color( 0.309804, 0.854902, 1, 0.588235 )
+corner_radius_top_right = 829
+expand_margin_left = 6.0
+expand_margin_right = 25.0
+anti_aliasing_size = 0.484
+
+[sub_resource type="StyleBoxFlat" id=1683]
+bg_color = Color( 0.396078, 0.901961, 1, 0.364706 )
+border_width_left = 5
+border_width_bottom = 5
+border_color = Color( 0.515625, 0.784302, 1, 1 )
+corner_radius_top_right = 135
+
+[resource]
+resource_local_to_scene = true
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.619608, 0.905882, 0.992157, 0.2 )
+Button/colors/font_color_focus = Color( 0.756863, 0.952941, 0.937255, 1 )
+Button/fonts/font = ExtResource( 1 )
+Button/styles/focus = SubResource( 1681 )
+Button/styles/hover = SubResource( 1682 )
+Button/styles/normal = SubResource( 1677 )
+Button/styles/pressed = SubResource( 1683 )
+Label/colors/font_color = Color( 1, 0, 0, 1 )

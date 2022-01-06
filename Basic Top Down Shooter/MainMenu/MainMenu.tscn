@@ -104,64 +104,64 @@ mouse_filter = 0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 481.0
+margin_right = 390.0
 margin_bottom = 920.0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_right = 481.0
-margin_bottom = 78.0
+margin_right = 390.0
+margin_bottom = 64.0
 text = "Название игры"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Logo" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-margin_top = 82.0
-margin_right = 481.0
-margin_bottom = 82.0
+margin_top = 68.0
+margin_right = 390.0
+margin_bottom = 68.0
 stretch_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 86.0
-margin_right = 481.0
+margin_top = 72.0
+margin_right = 390.0
 margin_bottom = 854.0
 size_flags_vertical = 3
 custom_constants/separation = 30
 alignment = 1
 
 [node name="Continue" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 171.0
-margin_right = 481.0
-margin_bottom = 255.0
+margin_top = 206.0
+margin_right = 390.0
+margin_bottom = 276.0
 text = "Продолжить"
 
 [node name="New_Game" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 285.0
-margin_right = 481.0
-margin_bottom = 369.0
+margin_top = 306.0
+margin_right = 390.0
+margin_bottom = 376.0
 text = "Новая игра"
 
 [node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 399.0
-margin_right = 481.0
-margin_bottom = 483.0
+margin_top = 406.0
+margin_right = 390.0
+margin_bottom = 476.0
 text = "Настройки"
 
 [node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 513.0
-margin_right = 481.0
-margin_bottom = 597.0
+margin_top = 506.0
+margin_right = 390.0
+margin_bottom = 576.0
 text = "Выход"
 
 [node name="Version" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 margin_top = 858.0
-margin_right = 481.0
+margin_right = 390.0
 margin_bottom = 920.0
 texture = ExtResource( 5 )
 stretch_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-margin_left = 485.0
+margin_left = 394.0
 margin_right = 1680.0
 margin_bottom = 920.0
 size_flags_horizontal = 3
@@ -171,9 +171,9 @@ size_flags_vertical = 3
 modulate = Color( 1, 0.745098, 0.972549, 1 )
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 597.0
+margin_left = 643.0
 margin_top = 460.0
-margin_right = 597.0
+margin_right = 643.0
 margin_bottom = 460.0
 
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_button_down"]

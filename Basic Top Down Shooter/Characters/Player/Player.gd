@@ -13,6 +13,7 @@ var mov_direction: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 # --- движение ----
 
+var shake_amount = 1.0
 var reload=false
 var ammo
 var can_take_damage=true
@@ -34,6 +35,17 @@ func _ready():
 	
 func _physics_process(delta):
 	
+	# ----- включение и выключение фонаря ----
+	if Input.is_action_just_pressed("ui_flashlight"):
+		if $FlashLight.visible==false:
+			$FlashLight.visible=true
+		else:
+			if $FlashLight.visible==true:
+				$FlashLight.visible=false		
+	# ----- включение и выключение фонаря ----
+	
+	
+	
 	# Движение камеры след за курсором
 	var mouse_pos=get_global_mouse_position()
 	camera.offset_h=(mouse_pos.x-global_position.x)/(1920/2.0)
@@ -41,6 +53,8 @@ func _physics_process(delta):
 	# Движение камеры след за курсором
 
 
+
+	# ----- движение игрока   ----
 	var move_vec = Vector2()
 	
 	var isMoving: bool=false
@@ -64,12 +78,20 @@ func _physics_process(delta):
 			$AnimationPlayer.play("walk")
 		isMoving=true
 		move_vec.x += 1
-		
+	
+	# -----  бег   ----
 	if Input.is_action_pressed("ul_shift"):
 		Globals.player_speed=300
 	if Input.is_action_just_released("ul_shift"):	
-		Globals.player_speed=140
+		Globals.player_speed=140	
+	# ----- бег   ----
 	
+	
+	# ----- движение игрока   ----
+		
+	
+	
+
 	if (!isMoving):
 		if (reload==false):
 			$AnimationPlayer.play("idle")
@@ -94,6 +116,14 @@ func _physics_process(delta):
 	# ---    стрельба    ----
 	if Input.is_action_pressed("shoot"):
 		weapon.shoot()
+		
+		# ---- дрожание камеры ------
+		if Globals.player_ammo!=0:
+			camera.set_offset(Vector2( \
+			rand_range(-0.7, 0.7) * shake_amount, \
+			rand_range(-0.7, 0.7) * shake_amount \
+		))
+		# ---- дрожание камеры -----
 
 
 	# --- игрока ест зомби ---
@@ -101,8 +131,12 @@ func _physics_process(delta):
 		Globals.player_hp-=0.2
 		Globals.player_speed=40
 	
-
-
+	
+	# нажал открыть консоль
+	if Input.is_action_just_pressed("ui_e"):
+		Globals.p_cons=true
+		
+		
 # получение урона
 func _on_HurtBox_area_entered(body):
 	if body.is_in_group("enemy_hit") and can_take_damage :
@@ -114,9 +148,23 @@ func _on_HurtBox_area_entered(body):
 	if body.is_in_group("enemy_eat") :	
 			eat=true
 		
-	
-
 
 func _on_HurtBox_area_exited(area):
 	eat=false
 	Globals.player_speed=140
+
+
+# =========  Подсказка взаимодействия с консолем =========  
+func _on_Console_body_entered(body):
+	if body.is_in_group("Player"):
+		$UI/All/MarginContainer/VBoxContainer/But_e.visible=true
+		Globals.p_pod=true
+# =========  Подсказка взаимодействия с консолем =========  
+
+
+func _on_Console_body_exited(body):
+	if body.is_in_group("Player"):
+		$UI/All/MarginContainer/VBoxContainer/But_e.visible=false
+		Globals.p_pod=false
+		
+
