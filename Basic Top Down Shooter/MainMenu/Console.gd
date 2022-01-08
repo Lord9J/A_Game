@@ -32,12 +32,22 @@ func _on_Button_pressed():
 
 func _on_Button_mouse_entered():
 	$All/RightPanel/VBoxContainer3/Map1.visible=true
+	$All/BottomPanel/VBoxContainer4/cont_bar.visible=true
+	$All/BottomPanel/VBoxContainer5/cont_label.visible=true
+	$All/MAPS/r5/ms1.visible=true
+	$All/MAPS/r5/ms2.visible=true
+	
 	
 	info.set_text("Описание первого задания")
 
 
 func _on_Button_mouse_exited():
 	$All/RightPanel/VBoxContainer3/Map1.visible=false
+	$All/BottomPanel/VBoxContainer4/cont_bar.visible=false
+	$All/BottomPanel/VBoxContainer5/cont_label.visible=false
+	$All/MAPS/r5/ms1.visible=false
+	$All/MAPS/r5/ms2.visible=false
+	
 	info.set_text(" ")
 
 
@@ -49,11 +59,15 @@ func _on_Button_nazad_pressed():
 
 
 
-func _on_r1_mouse_entered():
+func _on_r5_mouse_entered():
 	$All/BottomPanel/VBoxContainer4/cont_bar.visible=true
 	$All/BottomPanel/VBoxContainer5/cont_label.visible=true
+	$All/MAPS/r5/ms1.visible=true
+	$All/MAPS/r5/ms2.visible=true
 
 
-func _on_r1_mouse_exited():
+func _on_r5_mouse_exited():
 	$All/BottomPanel/VBoxContainer4/cont_bar.visible=false
 	$All/BottomPanel/VBoxContainer5/cont_label.visible=false
+	$All/MAPS/r5/ms1.visible=false
+	$All/MAPS/r5/ms2.visible=false

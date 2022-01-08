@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://fonts/xolonium/Xolonium.tres" type="DynamicFont" id=1]
-[ext_resource path="res://ARTs/MAP/maps2/HD wallpaper earth, neon, black background, world map.jpg" type="Texture" id=2]
+[ext_resource path="res://ARTs/MAP/maps2/r9.png" type="Texture" id=2]
 [ext_resource path="res://ARTs/background.png" type="Texture" id=3]
 [ext_resource path="res://ARTs/UI/MainPanel02.png" type="Texture" id=4]
 [ext_resource path="res://ARTs/UI/Button15.png" type="Texture" id=5]
@@ -20,6 +20,12 @@
 [ext_resource path="res://ARTs/MAP/maps2/r1.png" type="Texture" id=18]
 [ext_resource path="res://ARTs/PNG/ProgressBar_08/BarV8_Bar.png" type="Texture" id=19]
 [ext_resource path="res://ARTs/PNG/ProgressBar_08/BarV8_ProgressBar.png" type="Texture" id=20]
+[ext_resource path="res://ARTs/MAP/maps2/r8.png" type="Texture" id=21]
+[ext_resource path="res://ARTs/MAP/maps2/r2.png" type="Texture" id=22]
+[ext_resource path="res://ARTs/MAP/maps2/r6.png" type="Texture" id=23]
+[ext_resource path="res://ARTs/MAP/maps2/r4.png" type="Texture" id=24]
+[ext_resource path="res://ARTs/MAP/maps2/r3.png" type="Texture" id=25]
+[ext_resource path="res://ARTs/MAP/maps2/r5.png" type="Texture" id=26]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 5 )
@@ -70,6 +76,7 @@ __meta__ = {
 
 [node name="All" type="Control" parent="Console"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -105,7 +112,6 @@ __meta__ = {
 }
 
 [node name="r9" type="TextureButton" parent="Console/All/MAPS"]
-modulate = Color( 0.317647, 0.121569, 0.113725, 1 )
 margin_left = -76.0697
 margin_top = 54.5405
 margin_right = 1843.93
@@ -118,11 +124,12 @@ __meta__ = {
 }
 
 [node name="r1" type="TextureButton" parent="Console/All/MAPS"]
-margin_left = 40.8905
-margin_top = 352.504
-margin_right = 1960.89
-margin_bottom = 1552.5
-rect_scale = Vector2( 0.291, 0.286 )
+modulate = Color( 0.839216, 0.839216, 0.839216, 1 )
+margin_left = 64.8607
+margin_top = 348.274
+margin_right = 1984.86
+margin_bottom = 1548.27
+rect_scale = Vector2( 0.274, 0.299 )
 texture_normal = ExtResource( 14 )
 texture_hover = ExtResource( 18 )
 expand = true
@@ -130,86 +137,107 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Console/All/MAPS/r1"]
-visible = false
-margin_left = 532.193
-margin_top = 1043.09
-margin_right = 547.193
-margin_bottom = 1082.09
-rect_min_size = Vector2( 15, 15 )
-rect_scale = Vector2( 5.862, 1.075 )
-custom_styles/normal = SubResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="r2" type="TextureButton" parent="Console/All/MAPS"]
-margin_left = 378.913
-margin_top = 674.58
-margin_right = 2298.91
-margin_bottom = 1874.58
-rect_scale = Vector2( 0.194816, 0.329734 )
+margin_left = 387.754
+margin_top = 676.808
+margin_right = 2307.75
+margin_bottom = 1876.81
+rect_scale = Vector2( 0.176, 0.328 )
+hint_tooltip = "В разработке"
+mouse_filter = 1
 texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 22 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="r3" type="TextureButton" parent="Console/All/MAPS"]
-margin_left = 417.665
-margin_top = 192.327
-margin_right = 2337.67
-margin_bottom = 1392.33
-rect_scale = Vector2( 0.211852, 0.211852 )
+margin_left = 441.335
+margin_top = 193.172
+margin_right = 2361.34
+margin_bottom = 1393.18
+rect_scale = Vector2( 0.19, 0.219 )
 texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 25 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="r4" type="TextureButton" parent="Console/All/MAPS"]
-margin_left = 829.59
-margin_top = 327.243
-margin_right = 2749.59
-margin_bottom = 1527.24
-rect_scale = Vector2( 0.140356, 0.19299 )
+margin_left = 843.189
+margin_top = 331.354
+margin_right = 2763.19
+margin_bottom = 1531.35
+rect_scale = Vector2( 0.132, 0.191 )
 texture_normal = ExtResource( 15 )
+texture_hover = ExtResource( 24 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="r5" type="TextureButton" parent="Console/All/MAPS"]
-margin_left = 990.341
-margin_top = 208.115
-margin_right = 2910.34
-margin_bottom = 1408.12
-rect_scale = Vector2( 0.401308, 0.401308 )
+margin_left = 981.371
+margin_top = 219.962
+margin_right = 2901.36
+margin_bottom = 1419.97
+rect_scale = Vector2( 0.412, 0.477 )
 texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 26 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ms1" type="Button" parent="Console/All/MAPS/r5"]
+visible = false
+margin_left = 1194.41
+margin_top = 387.237
+margin_right = 1209.41
+margin_bottom = 426.237
+rect_min_size = Vector2( 15, 15 )
+rect_scale = Vector2( 11.2935, 2.07106 )
+custom_styles/normal = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ms2" type="Button" parent="Console/All/MAPS/r5"]
+visible = false
+margin_left = 906.928
+margin_top = 603.026
+margin_right = 921.928
+margin_bottom = 642.026
+rect_min_size = Vector2( 15, 15 )
+rect_scale = Vector2( 10.5094, 1.92726 )
+custom_styles/normal = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="r6" type="TextureButton" parent="Console/All/MAPS"]
-margin_left = 711.897
-margin_top = 572.675
-margin_right = 2631.9
-margin_bottom = 1772.68
+margin_left = 714.878
+margin_top = 569.646
+margin_right = 2634.88
+margin_bottom = 1769.65
 rect_scale = Vector2( 0.23884, 0.310121 )
 texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 23 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="r8" type="TextureButton" parent="Console/All/MAPS"]
-margin_left = 1390.78
-margin_top = 803.755
-margin_right = 3310.78
-margin_bottom = 2003.75
-rect_scale = Vector2( 0.194655, 0.194655 )
+margin_left = 1383.23
+margin_top = 822.039
+margin_right = 3303.23
+margin_bottom = 2022.03
+rect_scale = Vector2( 0.137, 0.143 )
 texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 21 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -369,14 +397,17 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Console/All/BlackGround"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 934.672, 522.402 )
+position = Vector2( 936, 523 )
 scale = Vector2( 33.405, 33.405 )
 z_index = -2
 texture = ExtResource( 3 )
 
-[connection signal="mouse_entered" from="Console/All/MAPS/r1" to="Console" method="_on_r1_mouse_entered"]
-[connection signal="mouse_exited" from="Console/All/MAPS/r1" to="Console" method="_on_r1_mouse_exited"]
-[connection signal="mouse_entered" from="Console/All/MAPS/r1/Button" to="Console" method="_on_Button_mouse_entered"]
-[connection signal="mouse_exited" from="Console/All/MAPS/r1/Button" to="Console" method="_on_Button_mouse_exited"]
-[connection signal="pressed" from="Console/All/MAPS/r1/Button" to="Console" method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="Console/All/MAPS/r5" to="Console" method="_on_r5_mouse_entered"]
+[connection signal="mouse_exited" from="Console/All/MAPS/r5" to="Console" method="_on_r5_mouse_exited"]
+[connection signal="mouse_entered" from="Console/All/MAPS/r5/ms1" to="Console" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Console/All/MAPS/r5/ms1" to="Console" method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="Console/All/MAPS/r5/ms1" to="Console" method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="Console/All/MAPS/r5/ms2" to="Console" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Console/All/MAPS/r5/ms2" to="Console" method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="Console/All/MAPS/r5/ms2" to="Console" method="_on_Button_pressed"]
 [connection signal="pressed" from="Console/All/nazad/Button_nazad" to="Console" method="_on_Button_nazad_pressed"]
